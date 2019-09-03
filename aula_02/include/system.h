@@ -86,6 +86,13 @@ class System
         void add_new_student();
 
         /**
+         * \brief Deletes an student from the database.
+         *
+         * \return None.
+         */
+        void delete_student();
+
+        /**
          * \brief Adds a new grade to the whole class.
          *
          * \return None.

@@ -74,6 +74,26 @@ void System::add_new_student()
     this->turma.push_back(Aluno(nome, matricula));
 }
 
+void System::delete_student()
+{
+    cout << endl;
+
+    for(unsigned int i=0; i<this->turma.size(); i++)
+    {
+        cout << "\t" << i << " - " << this->turma[i].get_matricula() << "\t\t" << this->turma[i].get_nome() << endl;
+    }
+
+    cout << endl;
+
+    cout << "Option: ";
+    unsigned int op;
+    cin >> op;
+
+    this->turma.erase(this->turma.begin()+op);
+
+    cout << endl;
+}
+
 void System::add_new_grade_to_all()
 {
     cout << endl;
@@ -142,6 +162,9 @@ int System::run()
             case MENU_OPTION_ADD_NEW_STUDENT:
                 this->add_new_student();
                 this->save();
+                break;
+            case MENU_OPTION_DEL_STUDENT:
+                this->delete_student();
                 break;
             case MENU_OPTION_ADD_NEW_GRADE:
                 this->add_new_grade_to_all();

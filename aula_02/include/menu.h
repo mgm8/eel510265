@@ -42,6 +42,7 @@
 enum main_menu_options_e
 {
     MENU_OPTION_ADD_NEW_STUDENT=1,          /**< Adds a new student. */
+    MENU_OPTION_DEL_STUDENT,                /**< Deletes an student. */
     MENU_OPTION_ADD_NEW_GRADE,              /**< Adds a new grade to the whole class. */
     MENU_OPTION_LIST_ALL_STUDENTS,          /**< List all students and grades. */
     MENU_OPTION_EXIT                        /**< Exits the program. */

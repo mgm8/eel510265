@@ -52,9 +52,10 @@ void Menu::print_main_menu()
     cout << "Main menu:" << endl;
     cout << endl;
     cout << "\t" << "1 - " << "Add a new student"   << endl;
-    cout << "\t" << "2 - " << "Add a new grade"     << endl;
-    cout << "\t" << "3 - " << "List all students"   << endl;
-    cout << "\t" << "4 - " << "Exit"                << endl;
+    cout << "\t" << "2 - " << "Delete an student"   << endl;
+    cout << "\t" << "3 - " << "Add a new grade"     << endl;
+    cout << "\t" << "4 - " << "List all students"   << endl;
+    cout << "\t" << "5 - " << "Exit"                << endl;
     cout << endl;
 }
 

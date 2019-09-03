@@ -94,15 +94,6 @@ class Aluno
         unsigned int get_max_notas();
 
         /**
-         * \brief Sets the register number of the student.
-         *
-         * \param[in] mat is the register number of the student.
-         *
-         * \return None.
-         */
-        void set_matricula(std::string mat);
-
-        /**
          * \brief Gets the register number of the student.
          *
          * \return The register number as an string.
@@ -153,6 +144,15 @@ class Aluno
         std::string matricula;          /**< Student register number. */
         std::string nome;               /**< Student name. */
         std::vector<float> notas;       /**< Grades. */
+
+        /**
+         * \brief Sets the register number of the student.
+         *
+         * \param[in] mat is the register number of the student.
+         *
+         * \return None.
+         */
+        void set_matricula(std::string mat);
 };
 
 #endif // ALUNO_H_
