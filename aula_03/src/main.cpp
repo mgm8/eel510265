@@ -34,7 +34,8 @@
  */
 
 #include <iostream>
-#include <unistd.h>
+#include <thread>
+#include <chrono>
 
 #include "clock_calendar.h"
 
@@ -50,7 +51,7 @@ int main(int argc, char *argv[])
 
         clock_calendar.increment();
 
-        sleep(1);
+        this_thread::sleep_for(chrono::seconds(1));
     }
 
     return 0;
