@@ -1,2 +1,3 @@
-# eel510265
-EEL510265 classes
+# EEL510265 - Programação de Sistemas Embarcados
+
+EEL510265 classes.
