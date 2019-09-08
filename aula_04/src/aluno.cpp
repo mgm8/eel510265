@@ -46,11 +46,16 @@ Aluno::Aluno()
     this->notas.resize(ALUNO_GRADES_QUANTITY, ALUNO_DEFAULT_GRADE);
 }
 
-Aluno::Aluno(std::string mat, std::string n)
+Aluno::Aluno(string mat, string n)
     : Aluno()
 {
     this->set_matricula(mat);
     this->set_nome(n);
+}
+
+string Aluno::get_matricula()
+{
+    return this->matricula;
 }
 
 void Aluno::set_max_notas(unsigned int max)
@@ -79,6 +84,11 @@ float Aluno::get_nota(unsigned int i)
 float Aluno::calc_media()
 {
     return accumulate(this->notas.begin(), this->notas.end(), (double)0)/this->notas.size();
+}
+
+void Aluno::set_matricula(string mat)
+{
+    this->matricula = mat;
 }
 
 //! \} End of aluno group

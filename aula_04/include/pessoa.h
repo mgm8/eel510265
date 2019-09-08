@@ -65,12 +65,33 @@ class Pessoa
         /**
          * \brief Constructor with initialization (overloaded).
          *
-         * \param[in] mat is the registration number of the person.
          * \param[in] n is the name of the person.
          *
          * \return None.
          */
-        Pessoa(std::string mat, std::string n);
+        Pessoa(std::string n);
+
+        /**
+         * \brief Constructor with initialization (overloaded).
+         *
+         * \param[in] n is the name of the person.
+         * \param[in] bd is the person's birthdate.
+         *
+         * \return None.
+         */
+        Pessoa(std::string n, Birthdate bd);
+
+        /**
+         * \brief Constructor with initialization (overloaded).
+         *
+         * \param[in] n is the name of the person.
+         * \param[in] year is the year of birth of the person.
+         * \param[in] month is the month of birth of the person.
+         * \param[in] day is the day of the birth of the person.
+         *
+         * \return None.
+         */
+        Pessoa(std::string n, unsigned int year, unsigned int month, unsigned int day);
 
         /**
          * \brief Destructor.
@@ -78,13 +99,6 @@ class Pessoa
          * \return None.
          */
         ~Pessoa();
-
-        /**
-         * \brief Gets the register number of the person.
-         *
-         * \return The register number as an string.
-         */
-        std::string get_matricula();
 
         /**
          * \brief Sets the person name.
@@ -131,20 +145,8 @@ class Pessoa
 
     private:
 
-        std::string matricula;          /**< Student register number. */
         std::string nome;               /**< Person name. */
         Birthdate birthdate;            /**< Person's birthdate. */
-
-    protected:
-
-        /**
-         * \brief Sets the register number of the person.
-         *
-         * \param[in] mat is the register number of the person.
-         *
-         * \return None.
-         */
-        void set_matricula(std::string mat);
 };
 
 #endif // PESSOA_H_

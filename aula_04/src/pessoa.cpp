@@ -41,20 +41,28 @@ Pessoa::Pessoa()
 {
 }
 
-Pessoa::Pessoa(string mat, string n)
+Pessoa::Pessoa(string n)
     : Pessoa()
 {
-    this->set_matricula(mat);
     this->set_nome(n);
+}
+
+Pessoa::Pessoa(string n, Birthdate bd)
+    : Pessoa()
+{
+    this->set_nome(n);
+    this->set_birthdate(bd);
+}
+
+Pessoa::Pessoa(string n, unsigned int year, unsigned int month, unsigned int day)
+    : Pessoa()
+{
+    this->set_nome(n);
+    this->set_birthdate(year, month, day);
 }
 
 Pessoa::~Pessoa()
 {
-}
-
-string Pessoa::get_matricula()
-{
-    return this->matricula;
 }
 
 void Pessoa::set_nome(string n)
@@ -82,11 +90,6 @@ void Pessoa::set_birthdate(unsigned int year, unsigned int month, unsigned int d
 Birthdate Pessoa::get_birthdate()
 {
     return this->birthdate;
-}
-
-void Pessoa::set_matricula(string mat)
-{
-    this->matricula = mat;
 }
 
 //! \} End of pessoa group

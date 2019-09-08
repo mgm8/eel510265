@@ -73,6 +73,13 @@ class Aluno: public Pessoa
         Aluno(std::string mat, std::string n);
 
         /**
+         * \brief Gets the registration number of the student.
+         *
+         * \return The registration number as an string.
+         */
+        std::string get_matricula();
+
+        /**
          * \brief Sets the maximum number of grades.
          *
          * \param[in] max is the maximum quantity of grades.
@@ -113,7 +120,17 @@ class Aluno: public Pessoa
 
     private:
 
+        std::string matricula;          /**< Student registration number. */
         std::vector<float> notas;       /**< Grades. */
+
+        /**
+         * \brief Sets the registration number of the student.
+         *
+         * \param[in] mat is the registration number of the student.
+         *
+         * \return None.
+         */
+        void set_matricula(std::string mat);
 };
 
 #endif // ALUNO_H_
