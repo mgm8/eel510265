@@ -41,10 +41,19 @@
  */
 enum main_menu_options_e
 {
-    MENU_OPTION_ADD_NEW_STUDENT=1,          /**< Adds a new student. */
+    MENU_OPTION_LOGIN=1,                    /**< Login. */
+    MENU_OPTION_LOGOUT,                     /**< Logout. */
+    MENU_OPTION_ADD_NEW_STUDENT,            /**< Adds a new student. */
     MENU_OPTION_DEL_STUDENT,                /**< Deletes an student. */
-    MENU_OPTION_ADD_NEW_GRADE,              /**< Adds a new grade to the whole class. */
+    MENU_OPTION_EDIT_STUDENT,               /**< Edit student data. */
+    MENU_OPTION_VIEW_STUDENT,               /**< View student data. */
     MENU_OPTION_LIST_ALL_STUDENTS,          /**< List all students and grades. */
+    MENU_OPTION_ADD_NEW_PROFESSOR,          /**< Adds a new professor. */
+    MENU_OPTION_DEL_PROFESSOR,              /**< Deletes a professor. */
+    MENU_OPTION_EDIT_PROFESSOR,             /**< Edit professor data. */
+    MENU_OPTION_VIEW_PROFESSOR,             /**< View professor data. */
+    MENU_OPTION_LIST_ALL_PROFESSORS,        /**< List all professors. */
+    MENU_OPTION_ADD_NEW_GRADE,              /**< Adds a new grade to the whole class. */
     MENU_OPTION_EXIT                        /**< Exits the program. */
 };
 

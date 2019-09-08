@@ -51,11 +51,20 @@ void Menu::print_main_menu()
 {
     cout << "Main menu:" << endl;
     cout << endl;
-    cout << "\t" << "1 - " << "Add a new student"   << endl;
-    cout << "\t" << "2 - " << "Delete an student"   << endl;
-    cout << "\t" << "3 - " << "Add a new grade"     << endl;
-    cout << "\t" << "4 - " << "List all students"   << endl;
-    cout << "\t" << "5 - " << "Exit"                << endl;
+    cout << "\t" << "1 - "  << "Login"                  << endl;
+    cout << "\t" << "2 - "  << "Logout"                 << endl;
+    cout << "\t" << "3 - "  << "Add a new student"      << endl;
+    cout << "\t" << "4 - "  << "Delete an student"      << endl;
+    cout << "\t" << "5 - "  << "Edit an student"        << endl;
+    cout << "\t" << "6 - "  << "View student data"      << endl;
+    cout << "\t" << "7 - "  << "List all students"      << endl;
+    cout << "\t" << "8 - "  << "Add a new professor"    << endl;
+    cout << "\t" << "9 - "  << "Delete a professor"     << endl;
+    cout << "\t" << "10 - " << "Edit a professor"       << endl;
+    cout << "\t" << "11 - " << "View professor data"    << endl;
+    cout << "\t" << "12 - " << "List all professors"    << endl;
+    cout << "\t" << "13 - " << "Add a new grade"        << endl;
+    cout << "\t" << "14 - " << "Exit"                   << endl;
     cout << endl;
 }
 
