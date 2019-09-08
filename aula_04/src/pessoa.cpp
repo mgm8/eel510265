@@ -92,4 +92,11 @@ Birthdate Pessoa::get_birthdate()
     return this->birthdate;
 }
 
+ostream& operator<<(ostream& os, const Birthdate& birthdate)
+{
+    os << birthdate.year << "/" << birthdate.month << "/" << birthdate.day;
+
+    return os;
+}
+
 //! \} End of pessoa group

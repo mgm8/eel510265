@@ -68,9 +68,23 @@ class Aluno: public Pessoa
         /**
          * \brief Constructor with initialization (overloaded).
          *
+         * \param[in] mat is registration number of the student.
+         * \param[in] n is the name of the student.
+         *
          * \return None.
          */
         Aluno(std::string mat, std::string n);
+
+        /**
+         * \brief Constructor with initialization (overloaded).
+         *
+         * \param[in] mat is registration number of the student.
+         * \param[in] n is the name of the student.
+         * \param[in] bd is the birthdate of the student.
+         *
+         * \return None.
+         */
+        Aluno(std::string mat, std::string n, Birthdate bd);
 
         /**
          * \brief Gets the registration number of the student.

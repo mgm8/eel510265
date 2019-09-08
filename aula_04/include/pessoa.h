@@ -36,6 +36,7 @@
 #ifndef PESSOA_H_
 #define PESSOA_H_
 
+#include <iostream>
 #include <string>
 
 /**
@@ -43,9 +44,19 @@
  */
 struct Birthdate
 {
-    unsigned int day;
-    unsigned int month;
-    unsigned int year;
+    unsigned int day;           /**< Birthday. */
+    unsigned int month;         /**< Birthmonth. */
+    unsigned int year;          /**< Birthyear. */
+
+    /**
+     * \brief cout overload.
+     *
+     * \param[in] os is the ostream object.
+     * \param[in] birthdate is the Birthdate object.
+     *
+     * \return An ostream object.
+     */
+    friend std::ostream& operator<<(std::ostream& os, const Birthdate& birthdate);
 };
 
 /**

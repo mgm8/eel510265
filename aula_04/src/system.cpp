@@ -64,6 +64,16 @@ void System::add_new_student()
     cout << "Name: ";
     string nome;
     cin >> nome;
+
+    cout << "Birthyear (YYYY): ";
+    Birthdate birthdate;
+    cin >> birthdate.year;
+    cout << endl;
+    cout << "Birthmonth (1 to 12): ";
+    cin >> birthdate.month;
+    cout << endl;
+    cout << "Birthday: ";
+    cin >> birthdate.day;
     cout << endl;
 
     cout << "Registration number: ";
@@ -71,7 +81,7 @@ void System::add_new_student()
     cin >> matricula;
     cout << endl;
 
-    this->turma.push_back(Aluno(nome, matricula));
+    this->turma.push_back(Aluno(nome, matricula, birthdate));
 }
 
 void System::delete_student()
@@ -130,7 +140,7 @@ void System::list_all()
 
     for(unsigned int i=0; i<this->turma.size(); i++)
     {
-        cout << this->turma[i].get_matricula() << "\t\t" << this->turma[i].get_nome();
+        cout << this->turma[i].get_matricula() << "\t\t" << this->turma[i].get_nome() << "\t\t" << this->turma[i].get_birthdate();
 
         for(unsigned int j=0; j<this->turma[i].get_max_notas(); j++)
         {
@@ -159,6 +169,10 @@ int System::run()
 
         switch(option)
         {
+            case MENU_OPTION_LOGIN:
+                break;
+            case MENU_OPTION_LOGOUT:
+                break;
             case MENU_OPTION_ADD_NEW_STUDENT:
                 this->add_new_student();
                 this->save();
@@ -166,12 +180,26 @@ int System::run()
             case MENU_OPTION_DEL_STUDENT:
                 this->delete_student();
                 break;
-            case MENU_OPTION_ADD_NEW_GRADE:
-                this->add_new_grade_to_all();
-                this->save();
+            case MENU_OPTION_EDIT_STUDENT:
+                break;
+            case MENU_OPTION_VIEW_STUDENT:
                 break;
             case MENU_OPTION_LIST_ALL_STUDENTS:
                 this->list_all();
+                break;
+            case MENU_OPTION_ADD_NEW_PROFESSOR:
+                break;
+            case MENU_OPTION_DEL_PROFESSOR:
+                break;
+            case MENU_OPTION_EDIT_PROFESSOR:
+                break;
+            case MENU_OPTION_VIEW_PROFESSOR:
+                break;
+            case MENU_OPTION_LIST_ALL_PROFESSORS:
+                break;
+            case MENU_OPTION_ADD_NEW_GRADE:
+                this->add_new_grade_to_all();
+                this->save();
                 break;
             case MENU_OPTION_EXIT:
                 return 0;

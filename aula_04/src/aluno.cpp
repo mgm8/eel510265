@@ -53,6 +53,14 @@ Aluno::Aluno(string mat, string n)
     this->set_nome(n);
 }
 
+Aluno::Aluno(string mat, string n, Birthdate bd)
+    : Aluno()
+{
+    this->set_matricula(mat);
+    this->set_nome(n);
+    this->set_birthdate(bd);
+}
+
 string Aluno::get_matricula()
 {
     return this->matricula;
