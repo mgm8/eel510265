@@ -5,7 +5,7 @@ Desenvolver um programa para cálculo e armazenagem das notas dos alunos em uma 
 Alterar a implementação realizada (pelo próprio aluno, ou a sugestão de implementação fornecida acima), visando incluir as seguintes funcionalidades:
 
 * Aumentar o limite máximo para n alunos, onde n é uma constante definida estáticamente no corpo do programa, antes da geração do executável.
-Utilizar as classes Clock, Calendar, e ClockCalendar desenvolvidas na aula sobre herança múltipla.
+* Utilizar as classes Clock, Calendar, e ClockCalendar desenvolvidas na aula sobre herança múltipla.
 * Definir uma classe Pessoa, que servirá como uma classe base para Aluno ("Aluno" deverá herdar "Pessoa").
 * A classe Aluno (classe derivada de Pessoa) deverá herdar atributos e métodos da classe Pessoa (classe base), tais como nome e data de nascimento. A classe Aluno deverá possuir apenas atributos relacionados a um aluno como, por exemplo, número de matrícula e notas.
 * Definir uma classe Professor que, assim como a classe Aluno, também será derivada de Pessoa ("Aluno" e "Professor" são ambos "Pessoas").

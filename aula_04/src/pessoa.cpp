@@ -67,6 +67,23 @@ string Pessoa::get_nome()
     return this->nome;
 }
 
+void Pessoa::set_birthdate(Birthdate bd)
+{
+    this->birthdate = bd;
+}
+
+void Pessoa::set_birthdate(unsigned int year, unsigned int month, unsigned int day)
+{
+    this->birthdate.year     = year;
+    this->birthdate.month    = month;
+    this->birthdate.day      = day;
+}
+
+Birthdate Pessoa::get_birthdate()
+{
+    return this->birthdate;
+}
+
 void Pessoa::set_matricula(string mat)
 {
     this->matricula = mat;

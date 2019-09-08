@@ -39,6 +39,16 @@
 #include <string>
 
 /**
+ * \brief Birthdate of a person.
+ */
+struct Birthdate
+{
+    unsigned int day;
+    unsigned int month;
+    unsigned int year;
+};
+
+/**
  * \brief Pessoa object.
  */
 class Pessoa
@@ -92,10 +102,38 @@ class Pessoa
          */
         std::string get_nome();
 
+        /**
+         * \brief Sets the birthdate of the person.
+         *
+         * \param[in] bd is a Birthdate object.
+         *
+         * \return None.
+         */
+        void set_birthdate(Birthdate bd);
+
+        /**
+         * \brief Sets the birthdate of the person.
+         *
+         * \param[in] year is the year of birth.
+         * \param[in] month is the month of birth.
+         * \param[in] day is the day of birth.
+         *
+         * \return None.
+         */
+        void set_birthdate(unsigned int year, unsigned int month, unsigned int day);
+
+        /**
+         * \brief Gets the birthdate of the person.
+         *
+         * \return The birthdate of the person.
+         */
+        Birthdate get_birthdate();
+
     private:
 
         std::string matricula;          /**< Student register number. */
         std::string nome;               /**< Person name. */
+        Birthdate birthdate;            /**< Person's birthdate. */
 
     protected:
 
