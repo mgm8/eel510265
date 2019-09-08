@@ -1,5 +1,5 @@
 /*
- * pessoa.cpp
+ * birthdate.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,75 +21,43 @@
  */
 
 /**
- * \brief Pessoa class implementation.
+ * \brief Birthdate class implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 1.0
  * 
- * \date 07/09/2019
+ * \date 08/09/2019
  * 
- * \addtogroup pessoa
+ * \addtogroup birthdate
  * \{
  */
 
-#include "pessoa.h"
+#include "birthdate.h"
 
 using namespace std;
 
-Pessoa::Pessoa()
+Birthdate::Birthdate()
 {
 }
 
-Pessoa::Pessoa(string n)
-    : Pessoa()
+Birthdate::Birthdate(unsigned int y, unsigned int m, unsigned int d)
+    : Birthdate()
 {
-    this->set_nome(n);
+    this->year  = y;
+    this->month = m;
+    this->day   = d;
 }
 
-Pessoa::Pessoa(string n, Birthdate bd)
-    : Pessoa()
-{
-    this->set_nome(n);
-    this->set_birthdate(bd);
-}
-
-Pessoa::Pessoa(string n, unsigned int year, unsigned int month, unsigned int day)
-    : Pessoa()
-{
-    this->set_nome(n);
-    this->set_birthdate(year, month, day);
-}
-
-Pessoa::~Pessoa()
+Birthdate::~Birthdate()
 {
 }
 
-void Pessoa::set_nome(string n)
+ostream& operator<<(ostream& os, const Birthdate& birthdate)
 {
-    this->nome = n;
+    os << birthdate.year << "/" << birthdate.month << "/" << birthdate.day;
+
+    return os;
 }
 
-string Pessoa::get_nome()
-{
-    return this->nome;
-}
-
-void Pessoa::set_birthdate(Birthdate bd)
-{
-    this->birthdate = bd;
-}
-
-void Pessoa::set_birthdate(unsigned int year, unsigned int month, unsigned int day)
-{
-    this->birthdate.year     = year;
-    this->birthdate.month    = month;
-    this->birthdate.day      = day;
-}
-
-Birthdate Pessoa::get_birthdate()
-{
-    return this->birthdate;
-}
-
-//! \} End of pessoa group
+//! \} End of birthdate group

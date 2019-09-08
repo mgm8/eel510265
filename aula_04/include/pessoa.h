@@ -36,28 +36,9 @@
 #ifndef PESSOA_H_
 #define PESSOA_H_
 
-#include <iostream>
 #include <string>
 
-/**
- * \brief Birthdate of a person.
- */
-struct Birthdate
-{
-    unsigned int day;           /**< Birthday. */
-    unsigned int month;         /**< Birthmonth. */
-    unsigned int year;          /**< Birthyear. */
-
-    /**
-     * \brief cout overload.
-     *
-     * \param[in] os is the ostream object.
-     * \param[in] birthdate is the Birthdate object.
-     *
-     * \return An ostream object.
-     */
-    friend std::ostream& operator<<(std::ostream& os, const Birthdate& birthdate);
-};
+#include "birthdate.h"
 
 /**
  * \brief Pessoa object.
