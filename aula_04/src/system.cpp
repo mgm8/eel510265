@@ -37,6 +37,7 @@
 #include <string>
 
 #include "system.h"
+#include "birthdate.h"
 
 using namespace std;
 
@@ -153,6 +154,29 @@ void System::list_all()
     cout << endl;
 }
 
+void System::add_new_professor()
+{
+    cout << endl;
+
+    cout << "Name: ";
+    string buf;
+    cin >> buf;
+    cout << endl;
+
+    cout << "Birthyear (YYYY): ";
+    Birthdate birthdate;
+    cin >> birthdate.year;
+    cout << endl;
+    cout << "Birthmonth (1 to 12): ";
+    cin >> birthdate.month;
+    cout << endl;
+    cout << "Birthday: ";
+    cin >> birthdate.day;
+    cout << endl;
+
+    professores.push_back(Professor(buf, birthdate));
+}
+
 int System::run()
 {
     if (!this->load())
@@ -188,6 +212,7 @@ int System::run()
                 this->list_all();
                 break;
             case MENU_OPTION_ADD_NEW_PROFESSOR:
+                this->add_new_professor();
                 break;
             case MENU_OPTION_DEL_PROFESSOR:
                 break;

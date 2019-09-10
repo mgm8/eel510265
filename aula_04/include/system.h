@@ -36,7 +36,10 @@
 #ifndef SYSTEM_H_
 #define SYSTEM_H_
 
+#include <vector>
+
 #include "turma.h"
+#include "professor.h"
 #include "menu.h"
 
 /**
@@ -107,6 +110,13 @@ class System
         void list_all();
 
         /**
+         * \brief Adds a new professor.
+         *
+         * \return None.
+         */
+        void add_new_professor();
+
+        /**
          * \brief Runs the system.
          *
          * \return Error code uppon termination.
@@ -115,8 +125,9 @@ class System
 
     private:
 
-        Turma turma;        /**< Turma. */
-        Menu main_menu;     /**< Main menu. */
+        Turma turma;                        /**< Turma. */
+        std::vector<Professor> professores; /**< Professores. */
+        Menu main_menu;                     /**< Main menu. */
 };
 
 #endif // SYSTEM_H_

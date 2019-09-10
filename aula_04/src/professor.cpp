@@ -35,4 +35,12 @@
 
 #include "professor.h"
 
+using namespace std;
+
+Professor::Professor(string n, Birthdate bd)
+{
+    this->set_nome(n);
+    this->set_birthdate(bd);
+}
+
 //! \} End of professor group

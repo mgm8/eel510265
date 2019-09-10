@@ -43,6 +43,17 @@
  */
 class Professor: public Pessoa
 {
+    public:
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] n is the name of the person.
+         * \param[in] bd is the person's birthdate.
+         *
+         * \return None.
+         */
+        Professor(std::string n, Birthdate bd);
 };
 
 #endif // PROFESSOR_H_
