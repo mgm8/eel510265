@@ -38,8 +38,10 @@ Implementação em C++ de um escalonador de tarefas, para utilização no contro
 
 * Poderá ser utilizado o conceito de threads (pthread.h) para disparar a execução concorrente das diversas tarefas, mas a política de escalonamento deverá ser implementada com o auxílio das estruturas de dados conforme apresentado na Figura 1.
 
-![](img/escalonamento_tarefas.png)
-*Figura 1. Escalonamento das tarefas de controle da máquina de venda e refrigerantes.*
+<p align="center">
+<img src="img/escalonamento_tarefas.png">
+<em>Figura 1. Escalonamento das tarefas de controle da máquina de venda e refrigerantes.</em>
+</p>
 
 * Os principais desafios para a implementação do escalonador são:
     * Definir o que será escalonado. Poderia ser, por exemplo, um escalonador de objetos, onde são escalonadas funções (métodos) de classes.
