@@ -40,6 +40,7 @@ Implementação em C++ de um escalonador de tarefas, para utilização no contro
 
 <p align="center">
 <img src="img/escalonamento_tarefas.png">
+<br>
 <em>Figura 1. Escalonamento das tarefas de controle da máquina de venda e refrigerantes.</em>
 </p>
 
