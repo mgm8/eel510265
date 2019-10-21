@@ -1,5 +1,5 @@
 /*
- * version.h
+ * coid.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,7 +21,7 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Coin implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -29,20 +29,34 @@
  * 
  * \date 20/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup coin
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "coin.h"
 
-#define FIRMWARE_VERSION            "0.1.1"
+Coin::Coin()
+{
+    this->set_value(COIN_DEFAULT_VALUE);
+}
 
-#define FIRMWARE_STATUS             "Development"
+Coin::Coin(float val)
+{
+    this->set_value(val);
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+Coin::~Coin()
+{
+}
 
-#endif // VERSION_H_
+void Coin::set_value(float val)
+{
+    this->value = val;
+}
 
-//! \} End of version group
+float Coin::get_value()
+{
+    return this->value;
+}
+
+//! \} End of ggggg group

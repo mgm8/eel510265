@@ -1,5 +1,5 @@
 /*
- * version.h
+ * soda.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,7 +21,7 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Soda implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -29,20 +29,58 @@
  * 
  * \date 20/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup soda
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "soda.h"
 
-#define FIRMWARE_VERSION            "0.1.1"
+using namespace std;
 
-#define FIRMWARE_STATUS             "Development"
+Soda::Soda()
+{
+    this->set_name(SODA_DEFAULT_NAME);
+    this->set_price(SODA_DEFAULT_PRICE);
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+Soda::Soda(std::string name, float price)
+{
+    this->set_name(name);
+    this->set_price(price);
+}
 
-#endif // VERSION_H_
+Soda::~Soda()
+{
+}
 
-//! \} End of version group
+void Soda::set_id(std::string id)
+{
+    this->id = id;
+}
+
+string Soda::get_id()
+{
+    return this->id;
+}
+
+void Soda::set_name(string name)
+{
+    this->name = name;
+}
+
+string Soda::get_name()
+{
+    return this->name;
+}
+
+void Soda::set_price(float price)
+{
+    this->price = price;
+}
+
+float Soda::get_price()
+{
+    return this->price;
+}
+
+//! \} End of soda group
