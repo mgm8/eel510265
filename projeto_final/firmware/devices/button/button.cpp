@@ -1,5 +1,5 @@
 /*
- * version.h
+ * button.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,49 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Button implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.3
  * 
- * \date 20/10/2019
+ * \date 21/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup button
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "button.h"
 
-#define FIRMWARE_VERSION            "0.1.3"
+using namespace std;
 
-#define FIRMWARE_STATUS             "Development"
+Button::Button()
+{
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+Button::Button(string label)
+    : Button()
+{
+    this->set_label(label);
+}
 
-#endif // VERSION_H_
+Button::~Button()
+{
+}
 
-//! \} End of version group
+bool Button::is_pressed()
+{
+    return false;
+}
+
+void Button::set_label(string label)
+{
+    this->label = label;
+}
+
+string Button::get_label()
+{
+    return this->label;
+}
+
+//! \} End of button group
