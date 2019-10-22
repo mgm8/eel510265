@@ -1,5 +1,5 @@
 /*
- * version.h
+ * vending_machine.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,40 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Vending machine implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.2
  * 
- * \date 20/10/2019
+ * \date 21/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup vending_machine
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "vending_machine.h"
 
-#define FIRMWARE_VERSION            "0.1.2"
+VendingMachine::VendingMachine()
+{
+}
 
-#define FIRMWARE_STATUS             "Development"
+VendingMachine::~VendingMachine()
+{
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+int VendingMachine::setup()
+{
+    return 1;
+}
 
-#endif // VERSION_H_
+int VendingMachine::run()
+{
+    while(1)
+    {
+    }
 
-//! \} End of version group
+    return 1;
+}
+
+//! \} End of vending_machine group

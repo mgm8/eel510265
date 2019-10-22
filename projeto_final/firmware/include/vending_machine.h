@@ -1,5 +1,5 @@
 /*
- * version.h
+ * vending_machine.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,57 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Vending machine definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.2
  * 
- * \date 20/10/2019
+ * \date 21/10/2019
  * 
- * \defgroup version Version
+ * \defgroup vending_machine Vending Machine
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef VENDING_MACHINE_H_
+#define VENDING_MACHINE_H_
 
-#define FIRMWARE_VERSION            "0.1.2"
+/**
+ * \brief Vending machine class.
+ */
+class VendingMachine
+{
+    public:
 
-#define FIRMWARE_STATUS             "Development"
+        /**
+         * \brief Constructor.
+         *
+         * \return None.
+         */
+        VendingMachine();
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        /**
+         * \brief Destructor.
+         *
+         * \return None.
+         */
+        ~VendingMachine();
 
-#endif // VERSION_H_
+        /**
+         * \brief Setups the vending machine.
+         *
+         * \return Status code.
+         */
+        int setup();
 
-//! \} End of version group
+        /**
+         * \brief Executes the vending machine.
+         *
+         * \return Error code uppon termination.
+         */
+        int run();
+};
+
+#endif // VENDING_MACHINE_H_
+
+//! \} End of vending_machine group

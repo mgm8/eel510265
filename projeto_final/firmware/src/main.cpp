@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.0
+ * \version 0.1.2
  * 
  * \date 20/10/2019
  * 
@@ -33,9 +33,20 @@
  * \{
  */
 
+#include <vending_machine.h>
+
 int main(int argc, char *argv[])
 {
-    return 0;
+    VendingMachine vending_machine;
+
+    if (vending_machine.setup() > 0)
+    {
+        return vending_machine.run();
+    }
+    else
+    {
+        return -1;      // Error during initialization
+    }
 }
 
 //! \} End of main group
