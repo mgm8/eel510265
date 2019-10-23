@@ -1,5 +1,5 @@
 /*
- * version.h
+ * interface.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,50 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief User interface definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.6
  * 
- * \date 20/10/2019
+ * \date 22/10/2019
  * 
- * \defgroup version Version
+ * \defgroup interface Interface
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef INTERFACE_H_
+#define INTERFACE_H_
 
-#define FIRMWARE_VERSION            "0.1.6"
+/**
+ * \brief User interface.
+ */
+class Interface
+{
+    public:
 
-#define FIRMWARE_STATUS             "Development"
+        /**
+         * \brief Constructor.
+         *
+         * \return None.
+         */
+        Interface() { };
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        /**
+         * \brief Destructor.
+         *
+         * \return None.
+         */
+        ~Interface() { };
 
-#endif // VERSION_H_
+        /**
+         * \brief Reads the interface.
+         *
+         * \return The read value (-1 on error).
+         */
+        virtual int read() = 0;
+};
 
-//! \} End of version group
+#endif // INTERFACE_H_
+
+//! \} End of interface group
