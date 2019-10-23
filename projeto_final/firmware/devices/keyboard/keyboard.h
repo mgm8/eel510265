@@ -1,5 +1,5 @@
 /*
- * version.h
+ * keyboard.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,50 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Keyboard interface definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.7
  * 
- * \date 20/10/2019
+ * \date 22/10/2019
  * 
- * \defgroup version Version
+ * \defgroup keyboar Keyboard
+ * \ingroup devices
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef KEYBOARD_H_
+#define KEYBOARD_H_
 
-#define FIRMWARE_VERSION            "0.1.7"
+#include <interface.h>
 
-#define FIRMWARE_STATUS             "Development"
+#define KEYBOARD_ERROR          -1
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+/**
+ * \brief Keyboard buttons.
+ */
+enum keyboard_options_e
+{
+    KEYBOARD_BUTTON_MEETS=1,    /**< MEETS button. */
+    KEYBOARD_BUTTON_ETIRPS      /**< ETIRPS button. */
+};
 
-#endif // VERSION_H_
+/**
+ * \brief Keyboard interface.
+ */
+class Keyboard: public Interface
+{
+    public:
 
-//! \} End of version group
+        /**
+         * \brief Reads the keyboard interface.
+         *
+         * \return The read value (-1 on error).
+         */
+        int read();
+};
+
+#endif // KEYBOARD_H_
+
+//! \} End of keyboard group

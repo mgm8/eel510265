@@ -1,5 +1,5 @@
 /*
- * version.h
+ * keyboard.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,43 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Keyboard interface implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.7
  * 
- * \date 20/10/2019
+ * \date 22/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup keyboard
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include <iostream>
 
-#define FIRMWARE_VERSION            "0.1.7"
+#include "keyboard.h"
 
-#define FIRMWARE_STATUS             "Development"
+using namespace std;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+int Keyboard::read()
+{
+    cout << "\t" << "1 - MEETS" << endl;
+    cout << "\t" << "2 - ETIRPS" << endl;;
+    cout << "Option: ";
 
-#endif // VERSION_H_
+    int option;
+    cin >> option;
 
-//! \} End of version group
+    cout << endl;
+
+    switch(option)
+    {
+        case KEYBOARD_BUTTON_MEETS:     break;
+        case KEYBOARD_BUTTON_ETIRPS:    break;
+        default:                        return KEYBOARD_ERROR;
+    }
+
+    return option;
+}
+
+//! \} End of keyboard group
