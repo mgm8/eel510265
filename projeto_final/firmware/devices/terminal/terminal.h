@@ -1,5 +1,5 @@
 /*
- * version.h
+ * terminal.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,59 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Terminal device definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.5
  * 
- * \date 20/10/2019
+ * \date 22/10/2019
  * 
- * \defgroup version Version
+ * \defgroup terminal Terminal
+ * \ingroup devices
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef TERMINAL_H_
+#define TERMINAL_H_
 
-#define FIRMWARE_VERSION            "0.1.5"
+#include <string>
 
-#define FIRMWARE_STATUS             "Development"
+#include <display.h>
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+#define TERMINAL_STATUS_OK      0
 
-#endif // VERSION_H_
+/**
+ * \brief Terminal device.
+ */
+class Terminal: public Display
+{
+    public:
 
-//! \} End of version group
+        /**
+         * \brief Display initialization.
+         *
+         * \return The status/error code.
+         */
+        int init();
+
+        /**
+         * \brief Writes ASCII characters to the display.
+         *
+         * \param[in] text is the text to write to the display.
+         *
+         * \return The status/error code.
+         */
+        int write(std::string text);
+
+        /**
+         * \brief Clears the terminal screen.
+         *
+         * \return The status/error code.
+         */
+        int clear();
+};
+
+#endif // TERMINAL_H_
+
+//! \} End of terminal group

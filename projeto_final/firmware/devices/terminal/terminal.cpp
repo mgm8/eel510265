@@ -1,5 +1,5 @@
 /*
- * version.h
+ * terminal.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,42 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Terminal device implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.5
  * 
- * \date 20/10/2019
+ * \date 22/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup terminal
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include <iostream>
 
-#define FIRMWARE_VERSION            "0.1.5"
+#include "terminal.h"
 
-#define FIRMWARE_STATUS             "Development"
+using namespace std;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+int Terminal::init()
+{
+    return TERMINAL_STATUS_OK;
+}
 
-#endif // VERSION_H_
+int Terminal::write(string text)
+{
+    cout << text;
 
-//! \} End of version group
+    return TERMINAL_STATUS_OK;
+}
+
+int Terminal::clear()
+{
+    this->write("\033[2J");     // Clears the entire screen
+    this->write("\033[1;1H");   // Positions the cursor at row 1, column 1
+
+    return TERMINAL_STATUS_OK;
+}
+
+//! \} End of terminal group
