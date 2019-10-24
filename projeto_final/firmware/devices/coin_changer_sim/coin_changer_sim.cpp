@@ -1,5 +1,5 @@
 /*
- * version.h
+ * coin_changer_sim.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,55 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Coin changer simulation implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.11
  * 
- * \date 20/10/2019
+ * \date 23/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup coin_changer_sim
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include <iostream>
 
-#define FIRMWARE_VERSION            "0.1.11"
+#include "coin_changer_sim.h"
 
-#define FIRMWARE_STATUS             "Development"
+using namespace std;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+int CoinChangerSim::init()
+{
+    this->last_inserted_coin = Coin(0);
 
-#endif // VERSION_H_
+    return COIN_CHANGER_STATUS_OK;
+}
 
-//! \} End of version group
+bool CoinChangerSim::coin_available()
+{
+    cout << "Coin value to insert: ";
+
+    float value;
+    cin >> value;
+
+    cout << endl;
+
+    this->last_inserted_coin = Coin(value);
+
+    return value > 0 ? true : false;
+}
+
+float CoinChangerSim::read()
+{
+    return this->last_inserted_coin.get_value();
+}
+
+int CoinChangerSim::give_change(float value)
+{
+    cout << "Returning R$" << to_string(value) << "..." << endl;
+
+    return COIN_CHANGER_STATUS_OK;
+}
+
+//! \} End of coin_changer_sim group
