@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.15
+ * \version 0.2.3
  * 
  * \date 22/10/2019
  * 
@@ -48,6 +48,7 @@ int Keyboard::read()
 {
     cout << "\t" << "1 - MEETS" << endl;
     cout << "\t" << "2 - ETIRPS" << endl;;
+    cout << "\t" << "3 - DEV" << endl;;
     cout << "Option: ";
 
     int option;
@@ -59,6 +60,7 @@ int Keyboard::read()
     {
         case INTERFACE_MEETS_PRESSED:   break;
         case INTERFACE_ETIRPS_PRESSED:  break;
+        case INTERFACE_DEV_PRESSED:     break;
         default:                        return INTERFACE_STATUS_ERROR;
     }
 

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.0
+ * \version 0.2.3
  * 
  * \date 21/10/2019
  * 
@@ -107,7 +107,7 @@ int VendingMachine::run()
 
         int option = this->interface->read();
 
-        if (option != INTERFACE_NONE_PRESSED)
+        if ((option != INTERFACE_NONE_PRESSED) and (option != INTERFACE_DEV_PRESSED))
         {
             this->display->clear();
 
@@ -142,36 +142,56 @@ int VendingMachine::run()
 
                     total_value += inserted_coin.get_value();
 
-                    this->display->write("Inserted value: R$");
-                    this->display->write(to_string(total_value));
-                    this->display->write("\n\r");
-
-                    this->delay->delay_ms(1000);
-
-                    if (total_value == choosed_soda.get_price())
+                    if (inserted_coin.get_value() != 0)
                     {
-                        this->can_dispenser->release_can(stoi(choosed_soda.get_id()));
-
-                        this->delay->delay_ms(3000);
-
-                        break;
-                    }
-                    else if (total_value > choosed_soda.get_price())
-                    {
-                        // Exchange
-                        this->coin_changer->give_change(total_value - choosed_soda.get_price());
+                        this->display->write("Inserted value: R$");
+                        this->display->write(to_string(total_value));
+                        this->display->write("\n\r");
 
                         this->delay->delay_ms(1000);
 
-                        this->can_dispenser->release_can(stoi(choosed_soda.get_id()));
+                        if (this->interface->read() == INTERFACE_DEV_PRESSED)
+                        {
+                            this->coin_changer->give_change(total_value);
 
-                        this->delay->delay_ms(3000);
+                            this->delay->delay_ms(2000);
 
-                        break;
-                    }
-                    else
-                    {
-                        // No enough coins
+                            break;
+                        }
+                        else
+                        {
+                            this->display->clear();
+
+                            this->display->write("Option already choosed!\n\r");
+
+                            this->display->clear();
+                        }
+
+                        if (total_value == choosed_soda.get_price())
+                        {
+                            this->can_dispenser->release_can(stoi(choosed_soda.get_id()));
+
+                            this->delay->delay_ms(3000);
+
+                            break;
+                        }
+                        else if (total_value > choosed_soda.get_price())
+                        {
+                            // Exchange
+                            this->coin_changer->give_change(total_value - choosed_soda.get_price());
+
+                            this->delay->delay_ms(1000);
+
+                            this->can_dispenser->release_can(stoi(choosed_soda.get_id()));
+
+                            this->delay->delay_ms(3000);
+
+                            break;
+                        }
+                        else
+                        {
+                            // No enough coins
+                        }
                     }
                 }
 

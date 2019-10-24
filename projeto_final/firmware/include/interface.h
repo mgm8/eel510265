@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.14
+ * \version 0.2.3
  * 
  * \date 22/10/2019
  * 
@@ -46,7 +46,8 @@ enum interface_button_e
 {
     INTERFACE_NONE_PRESSED=0,       /**< None pressed. */
     INTERFACE_MEETS_PRESSED,        /**< MEETS pressed. */
-    INTERFACE_ETIRPS_PRESSED        /**< ETIRPS pressed. */
+    INTERFACE_ETIRPS_PRESSED,       /**< ETIRPS pressed. */
+    INTERFACE_DEV_PRESSED           /**< DEV pressed. */
 };
 
 /**
