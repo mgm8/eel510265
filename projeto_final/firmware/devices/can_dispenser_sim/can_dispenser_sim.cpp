@@ -1,5 +1,5 @@
 /*
- * version.h
+ * can_dispenser_sim.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,45 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Can dispenser simulation implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.12
  * 
- * \date 20/10/2019
+ * \date 24/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup can_dispenser_sim
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "can_dispenser_sim.h"
 
-#define FIRMWARE_VERSION            "0.1.12"
+int CanDispenserSim::init()
+{
+    return CAN_DISPENSER_STATUS_OK;
+}
 
-#define FIRMWARE_STATUS             "Development"
+bool CanDispenserSim::is_empty()
+{
+    return true;
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+int CanDispenserSim::release_can(unsigned int op)
+{
+    switch(option)
+    {
+        case SODA_MEETS:
+            cout << "MEETS released!" << endl;
+            break;
+        case SODA_ETIRPS:
+            cout << "ETIRPS released!" << endl;
+            break;
+        default:
+            return CAN_DISPENSER_STATUS_ERROR;
+    }
 
-#endif // VERSION_H_
+    return CAN_DISPENSER_STATUS_OK;
+}
 
-//! \} End of version group
+//! \} End of can_dispenser_sim group
