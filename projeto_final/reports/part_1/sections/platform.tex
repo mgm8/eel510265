@@ -22,14 +22,16 @@
 
 \section{Plataforma Alvo} \label{sec:platform}
 
-Para embarcar o \textit{software} desenvolvido, pretende-se utilizar o \textit{kit} de desenvolvimento XXXXX utilizado durante as aulas.
+Para embarcar o \textit{software} desenvolvido, pretende-se utilizar o \textit{kit} de desenvolvimento ``\textit{STM32 F4 Discovery}'' \cite{stm32_discovery} apresentado durante as aulas.
 
-O mesmo eh baseado em um microcontrolador ARM Cortex-M4. As principais caracteristicas deste microcontrolador podem ser na \autoref{tab:arm_specs}.
+O mesmo é baseado em um microcontrolador ARM Cortex-M4, ou mais precisamente o modelo STM32F429. As principais características deste microcontrolador podem ser na \autoref{tab:arm_specs}.
 
-Este \textit{kit} de desenvolvimento tambem possui um \textit{display} de cristal liquido, XX botoes tateis, XX LEDs, um sensor XX, entre outros. Deste forma pretende-se utilizar o \textit{display} para apresentar informacoes ao usuario (como a opcao escolhia, o preco de cada opcao e instrucoes de operacao), os botos para operar a maquina (botoes para escolher o tipo de bebida e o botao ``DEV'' para cancelar a operacao escolhida) e simular a entrada de moedas (um botao para cada tipo de moeda aceita).
+Este \textit{kit} de desenvolvimento também possui um \textit{display} de cristal líquido e um botão tátil, que auxiliados por periféricos externos (chaves, botões e LEDs), servirão para a interação entre o sistema e o usuário. Mais especificamente, pretende-se utilizar o \textit{display} para apresentar informações ao usuário (como a opção escolhia, o preço de cada opção e instruções de operação), botões para operar a máquina (botões para escolher o tipo de bebida e o botão ``DEV'' para cancelar a operação escolhida) e simular a entrada de moedas (um botão para cada tipo de moeda aceita). Para se obter as informações de log, pretende-se utilizar uma porta UART, que transmitirá os dados requeridos para um computador quando requisitado.
 
 \subsection{Ferramentas de desenvolvimento}
 
-Para compilar o \textit{software} tendo o \textit{kit} de desenvolvimento como alvo, se utilizara o compilador GCC para a plataforma ARM (GNU ARM Embedded Toolchain \cite{gcc_arm}).
+Para compilar o \textit{software}, tendo o \textit{kit} de desenvolvimento como alvo, se utilizará o compilador GCC para a plataforma ARM (\textit{GNU ARM Embedded Toolchain} \cite{gcc_arm}).
 
-Para carregar o programa compilado no microcontrolador, se utilizara a ferramenta STLink \cite{stlink}.
+Para carregar o programa compilado no microcontrolador, se utilizará a ferramenta aberta ``\textit{STLink}'' \cite{stlink}.
+
+Como auxílio para o desenvolvimento, também pretende-se utilizar a biblioteca ``\textit{libopencm3}'' \cite{libopencm3}, que permite o acesso aos principais periféricos do microcontrolador e do \textit{kit} de desenvolvimento.
