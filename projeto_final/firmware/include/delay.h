@@ -1,5 +1,5 @@
 /*
- * version.h
+ * delay.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,61 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Generic delay definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.10
  * 
- * \date 20/10/2019
+ * \date 23/10/2019
  * 
- * \defgroup version Version
+ * \defgroup delay Delay
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef DELAY_H_
+#define DELAY_H_
 
-#define FIRMWARE_VERSION            "0.1.10"
+/**
+ * \brief Delay class.
+ */
+class Delay
+{
+    public:
 
-#define FIRMWARE_STATUS             "Development"
+        /**
+         * \brief Constructor.
+         *
+         * \return None.
+         */
+        Delay() { };
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        /**
+         * \brief Destructor.
+         *
+         * \return None.
+         */
+        ~Delay() { };
 
-#endif // VERSION_H_
+        /**
+         * \brief Milliseconds delay.
+         *
+         * \param[in] ms is the number of milliseconds do delay.
+         *
+         * \return None.
+         */
+        virtual void delay_ms(unsigned int ms) = 0;
 
-//! \} End of version group
+        /**
+         * \brief Seconds delay.
+         *
+         * \param[in] sec is the number of seconds to delay.
+         *
+         * \return None.
+         */
+        virtual void delay_s(unsigned int sec) = 0;
+};
+
+#endif // DELAY_H_
+
+//! \} End of delay group

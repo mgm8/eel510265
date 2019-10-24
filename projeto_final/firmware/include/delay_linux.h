@@ -1,5 +1,5 @@
 /*
- * version.h
+ * delay_linux.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,50 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Linux delay definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.10
  * 
- * \date 20/10/2019
+ * \date 23/10/2019
  * 
- * \defgroup version Version
+ * \defgroup delay_linux Linux delay
+ * \ingroup delay
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef DELAY_LINUX_H_
+#define DELAY_LINUX_H_
 
-#define FIRMWARE_VERSION            "0.1.10"
+#include "delay.h"
 
-#define FIRMWARE_STATUS             "Development"
+/**
+ * \brief Linux delay class.
+ */
+class DelayLinux: public Delay
+{
+    public:
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        /**
+         * \brief Milliseconds delay.
+         *
+         * \param[in] ms is the number of milliseconds do delay.
+         *
+         * \return None.
+         */
+        void delay_ms(unsigned int ms);
 
-#endif // VERSION_H_
+        /**
+         * \brief Seconds delay.
+         *
+         * \param[in] sec is the number of seconds to delay.
+         *
+         * \return None.
+         */
+        void delay_s(unsigned int sec);
+};
 
-//! \} End of version group
+#endif // DELAY_LINUX_H_
+
+//! \} End of delay_linux group

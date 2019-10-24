@@ -1,5 +1,5 @@
 /*
- * version.h
+ * delay_linux.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,33 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Linux delay implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.1.10
  * 
- * \date 20/10/2019
+ * \date 23/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup delay_linux
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include <thread>
+#include <chrono>
 
-#define FIRMWARE_VERSION            "0.1.10"
+#include "delay_linux.h"
 
-#define FIRMWARE_STATUS             "Development"
+using namespace std;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+void DelayLinux::delay_ms(unsigned int ms)
+{
+    this_thread::sleep_for(chrono::milliseconds(ms));
+}
 
-#endif // VERSION_H_
+void DelayLinux::delay_s(unsigned int sec)
+{
+    this_thread::sleep_for(chrono::seconds(sec));
+}
 
-//! \} End of version group
+//! \} End of delay_linux group
