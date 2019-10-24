@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.8
+ * \version 0.1.14
  * 
  * \date 22/10/2019
  * 
@@ -38,6 +38,16 @@
 
 #define INTERFACE_STATUS_OK         0
 #define INTERFACE_STATUS_ERROR      1
+
+/**
+ * \brief Interface buttons.
+ */
+enum interface_button_e
+{
+    INTERFACE_NONE_PRESSED=0,       /**< None pressed. */
+    INTERFACE_MEETS_PRESSED,        /**< MEETS pressed. */
+    INTERFACE_ETIRPS_PRESSED        /**< ETIRPS pressed. */
+};
 
 /**
  * \brief User interface.
