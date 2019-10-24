@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.5
+ * \version 0.1.9
  * 
  * \date 22/10/2019
  * 
@@ -40,8 +40,6 @@
 #include <string>
 
 #include <display.h>
-
-#define TERMINAL_STATUS_OK      0
 
 /**
  * \brief Terminal device.

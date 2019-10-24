@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.5
+ * \version 0.1.9
  * 
  * \date 22/10/2019
  * 
@@ -41,14 +41,14 @@ using namespace std;
 
 int Terminal::init()
 {
-    return TERMINAL_STATUS_OK;
+    return DISPLAY_STATUS_OK;
 }
 
 int Terminal::write(string text)
 {
     cout << text;
 
-    return TERMINAL_STATUS_OK;
+    return DISPLAY_STATUS_OK;
 }
 
 int Terminal::clear()
@@ -56,7 +56,7 @@ int Terminal::clear()
     this->write("\033[2J");     // Clears the entire screen
     this->write("\033[1;1H");   // Positions the cursor at row 1, column 1
 
-    return TERMINAL_STATUS_OK;
+    return DISPLAY_STATUS_OK;
 }
 
 //! \} End of terminal group

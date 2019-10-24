@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.4
+ * \version 0.1.9
  * 
  * \date 22/10/2019
  * 
@@ -37,6 +37,9 @@
 #define DISPLAY_H_
 
 #include <string>
+
+#define DISPLAY_STATUS_OK      0
+#define DISPLAY_STATUS_ERROR   1
 
 /**
  * \brief Display device.
