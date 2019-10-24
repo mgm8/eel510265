@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.1
+ * \version 0.1.13
  * 
  * \date 20/10/2019
  * 
@@ -43,8 +43,9 @@ Soda::Soda()
     this->set_price(SODA_DEFAULT_PRICE);
 }
 
-Soda::Soda(std::string name, float price)
+Soda::Soda(string id, string name, float price)
 {
+    this->set_id(id);
     this->set_name(name);
     this->set_price(price);
 }
@@ -53,7 +54,7 @@ Soda::~Soda()
 {
 }
 
-void Soda::set_id(std::string id)
+void Soda::set_id(string id)
 {
     this->id = id;
 }

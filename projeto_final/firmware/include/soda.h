@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.1
+ * \version 0.1.13
  * 
  * \date 20/10/2019
  * 
@@ -40,6 +40,15 @@
 
 #define SODA_DEFAULT_NAME       "SODA"
 #define SODA_DEFAULT_PRICE      0.0
+
+/**
+ * \brief Soda types.
+ */
+enum soda_e
+{
+    SODA_MEETS=0,   /**< MEETS. */
+    SODA_ETIRPS     /**< ETIRPS. */
+};
 
 /**
  * \brief Soda generic class.
@@ -58,12 +67,13 @@ class Soda
         /**
          * \brief Constructor (overloaded).
          *
+         * \param[in] id is an string with the ID code of the soda.
          * \param[in] name is an string with the name of the soda.
          * \param[in] price is the new price of the soda.
          *
          * \return None.
          */
-        Soda(std::string name, float price);
+        Soda(std::string id, std::string name, float price);
 
         /**
          * \brief Destructor.
