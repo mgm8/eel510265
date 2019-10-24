@@ -1,5 +1,5 @@
 /*
- * soda.cpp
+ * drink.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,67 +21,67 @@
  */
 
 /**
- * \brief Soda implementation.
+ * \brief Drink implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.13
+ * \version 0.2.4
  * 
  * \date 20/10/2019
  * 
- * \addtogroup soda
+ * \addtogroup drink
  * \{
  */
 
-#include "soda.h"
+#include "drink.h"
 
 using namespace std;
 
-Soda::Soda()
+Drink::Drink()
 {
-    this->set_name(SODA_DEFAULT_NAME);
-    this->set_price(SODA_DEFAULT_PRICE);
+    this->set_name(DRINK_DEFAULT_NAME);
+    this->set_price(DRINK_DEFAULT_PRICE);
 }
 
-Soda::Soda(string id, string name, float price)
+Drink::Drink(string id, string name, float price)
 {
     this->set_id(id);
     this->set_name(name);
     this->set_price(price);
 }
 
-Soda::~Soda()
+Drink::~Drink()
 {
 }
 
-void Soda::set_id(string id)
+void Drink::set_id(string id)
 {
     this->id = id;
 }
 
-string Soda::get_id()
+string Drink::get_id()
 {
     return this->id;
 }
 
-void Soda::set_name(string name)
+void Drink::set_name(string name)
 {
     this->name = name;
 }
 
-string Soda::get_name()
+string Drink::get_name()
 {
     return this->name;
 }
 
-void Soda::set_price(float price)
+void Drink::set_price(float price)
 {
     this->price = price;
 }
 
-float Soda::get_price()
+float Drink::get_price()
 {
     return this->price;
 }
 
-//! \} End of soda group
+//! \} End of drink group

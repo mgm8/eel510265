@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.15
+ * \version 0.2.4
  * 
  * \date 24/10/2019
  * 
@@ -35,7 +35,7 @@
 
 #include <iostream>
 
-#include <soda.h>
+#include <drink.h>
 
 #include "can_dispenser_sim.h"
 
@@ -55,10 +55,10 @@ int CanDispenserSim::release_can(unsigned int op)
 {
     switch(op)
     {
-        case SODA_MEETS:
+        case DRINK_MEETS:
             cout << "MEETS released!" << endl;
             break;
-        case SODA_ETIRPS:
+        case DRINK_ETIRPS:
             cout << "ETIRPS released!" << endl;
             break;
         default:

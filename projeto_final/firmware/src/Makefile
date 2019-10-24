@@ -7,7 +7,7 @@ INC=../include
 DEVICES=../devices
 FLAGS=-std=c++11 -I$(INC) -I$(DEVICES)
 
-all: $(BUILD_DIR)/main.o $(BUILD_DIR)/coin.o $(BUILD_DIR)/soda.o $(BUILD_DIR)/vending_machine.o $(BUILD_DIR)/delay_linux.o  $(BUILD_DIR)/coin_changer.o
+all: $(BUILD_DIR)/main.o $(BUILD_DIR)/coin.o $(BUILD_DIR)/drink.o $(BUILD_DIR)/vending_machine.o $(BUILD_DIR)/delay_linux.o  $(BUILD_DIR)/coin_changer.o
 
 $(BUILD_DIR)/main.o: main.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
@@ -15,7 +15,7 @@ $(BUILD_DIR)/main.o: main.cpp
 $(BUILD_DIR)/coin.o: coin.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
 
-$(BUILD_DIR)/soda.o: soda.cpp
+$(BUILD_DIR)/drink.o: drink.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
 
 $(BUILD_DIR)/vending_machine.o: vending_machine.cpp

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.3
+ * \version 0.2.4
  * 
  * \date 21/10/2019
  * 
@@ -36,7 +36,7 @@
 #include <string>
 
 #include "vending_machine.h"
-#include "soda.h"
+#include "drink.h"
 
 #include <terminal/terminal.h>
 #include <keyboard/keyboard.h>
@@ -111,21 +111,21 @@ int VendingMachine::run()
         {
             this->display->clear();
 
-            Soda choosed_soda;
+            Drink choosed_drink;
 
             switch(option)
             {
                 case INTERFACE_MEETS_PRESSED:
-                    choosed_soda = Soda(to_string(SODA_MEETS), "MEETS", 1.5);
+                    choosed_drink = Drink(to_string(DRINK_MEETS), "MEETS", 1.5);
                     break;
                 case INTERFACE_ETIRPS_PRESSED:
-                    choosed_soda = Soda(to_string(SODA_ETIRPS), "ETIRPS", 1.5);
+                    choosed_drink = Drink(to_string(DRINK_ETIRPS), "ETIRPS", 1.5);
                     break;
             }
 
-            this->display->write(choosed_soda.get_name());
+            this->display->write(choosed_drink.get_name());
             this->display->write(": R$");
-            this->display->write(to_string(choosed_soda.get_price()));
+            this->display->write(to_string(choosed_drink.get_price()));
             this->display->write("\n\r");
 
             this->display->write("Waiting coins...\n\r");
@@ -167,22 +167,22 @@ int VendingMachine::run()
                             this->display->clear();
                         }
 
-                        if (total_value == choosed_soda.get_price())
+                        if (total_value == choosed_drink.get_price())
                         {
-                            this->can_dispenser->release_can(stoi(choosed_soda.get_id()));
+                            this->can_dispenser->release_can(stoi(choosed_drink.get_id()));
 
                             this->delay->delay_ms(3000);
 
                             break;
                         }
-                        else if (total_value > choosed_soda.get_price())
+                        else if (total_value > choosed_drink.get_price())
                         {
                             // Exchange
-                            this->coin_changer->give_change(total_value - choosed_soda.get_price());
+                            this->coin_changer->give_change(total_value - choosed_drink.get_price());
 
                             this->delay->delay_ms(1000);
 
-                            this->can_dispenser->release_can(stoi(choosed_soda.get_id()));
+                            this->can_dispenser->release_can(stoi(choosed_drink.get_id()));
 
                             this->delay->delay_ms(3000);
 

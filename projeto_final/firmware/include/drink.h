@@ -1,5 +1,5 @@
 /*
- * soda.h
+ * drink.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,39 +21,39 @@
  */
 
 /**
- * \brief Soda definition.
+ * \brief Drink definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.13
+ * \version 0.2.4
  * 
  * \date 20/10/2019
  * 
- * \defgroup soda Soda
+ * \defgroup drink Drink
  * \{
  */
 
-#ifndef SODA_H_
-#define SODA_H_
+#ifndef DRINK_H_
+#define DRINK_H_
 
 #include <string>
 
-#define SODA_DEFAULT_NAME       "SODA"
-#define SODA_DEFAULT_PRICE      0.0
+#define DRINK_DEFAULT_NAME      "DRINK"
+#define DRINK_DEFAULT_PRICE     0.0
 
 /**
- * \brief Soda types.
+ * \brief Drink types.
  */
-enum soda_e
+enum drink_e
 {
-    SODA_MEETS=0,   /**< MEETS. */
-    SODA_ETIRPS     /**< ETIRPS. */
+    DRINK_MEETS=0,      /**< MEETS. */
+    DRINK_ETIRPS        /**< ETIRPS. */
 };
 
 /**
- * \brief Soda generic class.
+ * \brief Drink generic class.
  */
-class Soda
+class Drink
 {
     public:
 
@@ -62,71 +62,71 @@ class Soda
          *
          * \return None.
          */
-        Soda();
+        Drink();
 
         /**
          * \brief Constructor (overloaded).
          *
-         * \param[in] id is an string with the ID code of the soda.
-         * \param[in] name is an string with the name of the soda.
-         * \param[in] price is the new price of the soda.
+         * \param[in] id is an string with the ID code of the drink.
+         * \param[in] name is an string with the name of the drink.
+         * \param[in] price is the new price of the drink.
          *
          * \return None.
          */
-        Soda(std::string id, std::string name, float price);
+        Drink(std::string id, std::string name, float price);
 
         /**
          * \brief Destructor.
          *
          * \return None.
          */
-        ~Soda();
+        ~Drink();
 
         /**
-         * \brief Sets the ID of the soda.
+         * \brief Sets the ID of the drink.
          *
-         * \param[in] id is the ID code of the soda.
+         * \param[in] id is the ID code of the drink.
          *
          * \return None.
          */
         void set_id(std::string id);
 
         /**
-         * \brief Gets the ID of the soda.
+         * \brief Gets the ID of the drink.
          *
-         * \return The ID code of the soda as an string.
+         * \return The ID code of the drink as an string.
          */
         std::string get_id();
 
         /**
-         * \brief Sets the name of the soda.
+         * \brief Sets the name of the drink.
          *
-         * \param[in] name is an string with the new name of the soda.
+         * \param[in] name is an string with the new name of the drink.
          *
          * \return None.
          */
         void set_name(std::string name);
 
         /**
-         * \brief Gets the name of the soda as an string.
+         * \brief Gets the name of the drink as an string.
          *
-         * \return The name of the soda.
+         * \return The name of the drink.
          */
         std::string get_name();
 
         /**
-         * \brief Sets the price of the soda.
+         * \brief Sets the price of the drink.
          *
-         * \param[in] price is the new price of the soda.
+         * \param[in] price is the new price of the drink.
          *
          * \return None.
          */
         void set_price(float price);
 
         /**
-         * \brief Gets the price of the soda.
+         * \brief Gets the price of the drink.
          *
-         * \return The price of the soda.
+         * \return The price of the drink.
          */
         float get_price();
 
@@ -138,16 +138,16 @@ class Soda
         std::string id;
 
         /**
-         * \brief Soda name.
+         * \brief Drink name.
          */
         std::string name;
 
         /**
-         * \brief Soda price value.
+         * \brief Drink price value.
          */
         float price;
 };
 
-#endif // SODA_H_
+#endif // DRINK_H_
 
-//! \} End of soda group
+//! \} End of drink group

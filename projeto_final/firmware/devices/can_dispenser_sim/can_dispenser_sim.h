@@ -65,8 +65,8 @@ class CanDispenserSim: public CanDispenser
          *
          * \param[in] op is the can type to release. It can be:
          * \parblock
-         *      - SODA_MEETS
-         *      - SODA_ETIRPS
+         *      - DRINK_MEETS
+         *      - DRINK_ETIRPS
          *      .
          * \endparblock
          *
