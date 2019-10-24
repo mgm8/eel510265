@@ -1,0 +1,35 @@
+%
+% platform.tex
+%
+% Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
+%
+% Relatório 1 do Trabalho Final da Disciplina EEL510265.
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+% International License. To view a copy of this license,
+% visit http://creativecommons.org/licenses/by-sa/4.0/.
+%
+
+%
+% \brief Platform section.
+%
+% \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
+%
+% \version 0.1.0
+%
+% \date 24/10/2019
+%
+
+\section{Plataforma Alvo} \label{sec:platform}
+
+Para embarcar o \textit{software} desenvolvido, pretende-se utilizar o \textit{kit} de desenvolvimento XXXXX utilizado durante as aulas.
+
+O mesmo eh baseado em um microcontrolador ARM Cortex-M4. As principais caracteristicas deste microcontrolador podem ser na \autoref{tab:arm_specs}.
+
+Este \textit{kit} de desenvolvimento tambem possui um \textit{display} de cristal liquido, XX botoes tateis, XX LEDs, um sensor XX, entre outros. Deste forma pretende-se utilizar o \textit{display} para apresentar informacoes ao usuario (como a opcao escolhia, o preco de cada opcao e instrucoes de operacao), os botos para operar a maquina (botoes para escolher o tipo de bebida e o botao ``DEV'' para cancelar a operacao escolhida) e simular a entrada de moedas (um botao para cada tipo de moeda aceita).
+
+\subsection{Ferramentas de desenvolvimento}
+
+Para compilar o \textit{software} tendo o \textit{kit} de desenvolvimento como alvo, se utilizara o compilador GCC para a plataforma ARM (GNU ARM Embedded Toolchain \cite{gcc_arm}).
+
+Para carregar o programa compilado no microcontrolador, se utilizara a ferramenta STLink \cite{stlink}.
