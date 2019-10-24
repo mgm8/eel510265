@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.7
+ * \version 0.1.8
  * 
  * \date 22/10/2019
  * 
@@ -38,6 +38,11 @@
 #include "keyboard.h"
 
 using namespace std;
+
+int Keyboard::init()
+{
+    return INTERFACE_STATUS_OK;
+}
 
 int Keyboard::read()
 {
@@ -54,7 +59,7 @@ int Keyboard::read()
     {
         case KEYBOARD_BUTTON_MEETS:     break;
         case KEYBOARD_BUTTON_ETIRPS:    break;
-        default:                        return KEYBOARD_ERROR;
+        default:                        return INTERFACE_ERROR;
     }
 
     return option;

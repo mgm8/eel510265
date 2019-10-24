@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.7
+ * \version 0.1.8
  * 
  * \date 22/10/2019
  * 
@@ -38,8 +38,6 @@
 #define KEYBOARD_H_
 
 #include <interface.h>
-
-#define KEYBOARD_ERROR          -1
 
 /**
  * \brief Keyboard buttons.
@@ -56,6 +54,13 @@ enum keyboard_options_e
 class Keyboard: public Interface
 {
     public:
+
+        /**
+         * \brief Keyboard initialization.
+         *
+         * \return Error/status code.
+         */
+        int init();
 
         /**
          * \brief Reads the keyboard interface.

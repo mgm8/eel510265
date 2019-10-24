@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.6
+ * \version 0.1.8
  * 
  * \date 22/10/2019
  * 
@@ -35,6 +35,9 @@
 
 #ifndef INTERFACE_H_
 #define INTERFACE_H_
+
+#define INTERFACE_STATUS_OK         0
+#define INTERFACE_STATUS_ERROR      1
 
 /**
  * \brief User interface.
@@ -56,6 +59,15 @@ class Interface
          * \return None.
          */
         ~Interface() { };
+
+        /**
+         * \brief Interface initialization.
+         *
+         * \note Pure virtual method.
+         *
+         * \return Error/status core.
+         */
+        virtual int init() = 0;
 
         /**
          * \brief Reads the interface.
