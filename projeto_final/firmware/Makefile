@@ -2,7 +2,7 @@ SOURCE=src
 TARGET=vending_machine
 
 ifndef BUILD_DIR
-	BUILD_DIR=build
+	BUILD_DIR=.
 endif
 
 CXX=g++

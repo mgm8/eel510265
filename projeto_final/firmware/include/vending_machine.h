@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.2
+ * \version 0.2.0
  * 
  * \date 21/10/2019
  * 
@@ -35,6 +35,14 @@
 
 #ifndef VENDING_MACHINE_H_
 #define VENDING_MACHINE_H_
+
+#include "display.h"
+#include "interface.h"
+#include "coin_changer.h"
+#include "can_dispenser.h"
+#include "delay.h"
+
+#define VENDING_MACHINE_STATUS_OK       1
 
 /**
  * \brief Vending machine class.
@@ -70,6 +78,33 @@ class VendingMachine
          * \return Error code uppon termination.
          */
         int run();
+
+    private:
+
+        /**
+         * \brief User interface.
+         */
+        Interface *interface;
+
+        /**
+         * \brief Messages display.
+         */
+        Display *display;
+
+        /**
+         * \brief Coin changer device.
+         */
+        CoinChanger *coin_changer;
+
+        /**
+         * \brief Can dispenser device.
+         */
+        CanDispenser *can_dispenser;
+
+        /**
+         * \brief Delay.
+         */
+        Delay *delay;
 };
 
 #endif // VENDING_MACHINE_H_

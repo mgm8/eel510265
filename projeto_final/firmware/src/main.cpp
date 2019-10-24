@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.2
+ * \version 0.2.0
  * 
  * \date 20/10/2019
  * 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 {
     VendingMachine vending_machine;
 
-    if (vending_machine.setup() > 0)
+    if (vending_machine.setup() == VENDING_MACHINE_STATUS_OK)
     {
         return vending_machine.run();
     }
