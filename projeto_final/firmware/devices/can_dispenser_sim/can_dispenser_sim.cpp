@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.12
+ * \version 0.1.15
  * 
  * \date 24/10/2019
  * 
@@ -33,7 +33,13 @@
  * \{
  */
 
+#include <iostream>
+
+#include <soda.h>
+
 #include "can_dispenser_sim.h"
+
+using namespace std;
 
 int CanDispenserSim::init()
 {
@@ -47,7 +53,7 @@ bool CanDispenserSim::is_empty()
 
 int CanDispenserSim::release_can(unsigned int op)
 {
-    switch(option)
+    switch(op)
     {
         case SODA_MEETS:
             cout << "MEETS released!" << endl;

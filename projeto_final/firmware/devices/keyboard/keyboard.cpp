@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.8
+ * \version 0.1.15
  * 
  * \date 22/10/2019
  * 
@@ -57,9 +57,9 @@ int Keyboard::read()
 
     switch(option)
     {
-        case KEYBOARD_BUTTON_MEETS:     break;
-        case KEYBOARD_BUTTON_ETIRPS:    break;
-        default:                        return INTERFACE_ERROR;
+        case INTERFACE_MEETS_PRESSED:   break;
+        case INTERFACE_ETIRPS_PRESSED:  break;
+        default:                        return INTERFACE_STATUS_ERROR;
     }
 
     return option;
