@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.1
+ * \version 0.2.1
  * 
  * \date 20/10/2019
  * 
@@ -59,4 +59,14 @@ float Coin::get_value()
     return this->value;
 }
 
-//! \} End of ggggg group
+bool Coin::operator ==(Coin other)
+{
+    return this->get_value() == other.get_value();
+}
+
+bool Coin::operator !=(Coin other)
+{
+    return this->get_value() != other.get_value();
+}
+
+//! \} End of coin group

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.1
+ * \version 0.2.1
  * 
  * \date 20/10/2019
  * 
@@ -83,6 +83,24 @@ class Coin
          * \return The monetary value of the coin.
          */
         float get_value();
+
+        /**
+         * \brief Equality operator overload.
+         *
+         * \param[in] other is other Coin to compare.
+         *
+         * \return TRUE/FALSE if the coins are equal or not.
+         */
+        bool operator ==(Coin other);
+
+        /**
+         * \brief Inequality operator overload.
+         *
+         * \param[in] other is other Coin to compare.
+         *
+         * \return TRUE/FALSE if the coins are not equal or not.
+         */
+        bool operator !=(Coin other);
 
     private:
 
