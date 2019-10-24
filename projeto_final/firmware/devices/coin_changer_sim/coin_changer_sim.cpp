@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.11
+ * \version 0.2.2
  * 
  * \date 23/10/2019
  * 
@@ -62,7 +62,28 @@ bool CoinChangerSim::coin_available()
 
 float CoinChangerSim::read()
 {
-    return this->last_inserted_coin.get_value();
+    bool is_valid = false;
+
+    for(unsigned int i=0; i<COIN_CHANGER_NUM_COIN_TYPES; i++)
+    {
+        if (this->last_inserted_coin == this->valid_coins[i])
+        {
+            is_valid = true;
+        }
+    }
+
+    if (is_valid)
+    {
+        return this->last_inserted_coin.get_value();
+    }
+    else
+    {
+        cout << "Invalid coin!" << endl;
+
+        this->give_change(this->last_inserted_coin.get_value());
+
+        return 0;
+    }
 }
 
 int CoinChangerSim::give_change(float value)

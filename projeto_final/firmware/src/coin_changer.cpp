@@ -1,5 +1,5 @@
 /*
- * version.h
+ * coin_changer.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,29 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Coin changer implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.2.2
  * 
- * \date 20/10/2019
+ * \date 24/10/2019
  * 
- * \defgroup version Version
+ * \addtogroup coin_changer
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "coin_changer.h"
 
-#define FIRMWARE_VERSION            "0.2.2"
+CoinChanger::CoinChanger()
+{
+    this->valid_coins[0] = Coin(0.25);
+    this->valid_coins[1] = Coin(0.50);
+    this->valid_coins[2] = Coin(1.00);
+}
 
-#define FIRMWARE_STATUS             "Development"
+CoinChanger::~CoinChanger()
+{
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
-
-#endif // VERSION_H_
-
-//! \} End of version group
+//! \} End of coin_changer group

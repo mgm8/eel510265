@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.11
+ * \version 0.2.2
  * 
  * \date 22/10/2019
  * 
@@ -36,8 +36,12 @@
 #ifndef COIN_CHANGER_H_
 #define COIN_CHANGER_H_
 
-#define COIN_CHANGER_STATUS_OK      0
-#define COIN_CHANGER_STATUS_ERROR   1
+#include "coin.h"
+
+#define COIN_CHANGER_STATUS_OK          0
+#define COIN_CHANGER_STATUS_ERROR       1
+
+#define COIN_CHANGER_NUM_COIN_TYPES     3
 
 /**
  * \brief Coin changer device.
@@ -51,14 +55,14 @@ class CoinChanger
          *
          * \return None.
          */
-        CoinChanger() { };
+        CoinChanger();
 
         /**
          * \brief Destructor.
          *
          * \return None.
          */
-        ~CoinChanger() { };
+        ~CoinChanger();
 
         /**
          * \brief Coin input initialization.
@@ -89,6 +93,13 @@ class CoinChanger
          * \return Error/status code.
          */
         virtual int give_change(float value) = 0;
+
+    protected:
+
+        /**
+         * \brief Valid coins.
+         */
+        Coin valid_coins[COIN_CHANGER_NUM_COIN_TYPES];
 };
 
 #endif // COIN_CHANGER_H_
