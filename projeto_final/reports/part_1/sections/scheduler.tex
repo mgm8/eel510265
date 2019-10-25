@@ -22,3 +22,12 @@
 
 \section{Funcionamento do Escalonador} \label{sec:scheduler}
 
+Para implementar o escalonador de tarefas, pretende-se utilizar o seguinte esquema:
+
+\begin{itemize}
+    \item O escalonamento será feito para os métodos das classes (os métodos serão escalonados).
+    \item No TCB de cada tarefa serão armazenados o período, a prioridade, o ID e o nome da tarefa.
+    \item O tempo será controlado através de um timer (interrupção no caso da plataforma embarcada, ou uma thread no caso da máquina sendo simulada em um sistema operacional).
+    \item O escalonamento das tarefas (qual tarefa deve ser executada em um determinado instante de tempo ou \textit{tick} do sistema) deverá ser feito durante a contagem de tempo do \textit{time}, ou seja, nos \textit{ticks} do sistema.
+    \item A principio, pretende-se utilizar a politica de escalonamento ``\textit{First come, first served}'', que nada mais eh um que um esquema de FIFO (ou seja, as tarefas sao executadas de acordo com a ordem que chegam). Dependendo dos resultados obtidos, outros algoritmos tambem podem ser testados (EDF, DM, etc.).
+\end{itemize}
