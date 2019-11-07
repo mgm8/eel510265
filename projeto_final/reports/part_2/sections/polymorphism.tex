@@ -1,0 +1,51 @@
+%
+% polymorphism.tex
+%
+% Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
+%
+% Relatório 2 do Trabalho Final da Disciplina EEL510265.
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+% International License. To view a copy of this license,
+% visit http://creativecommons.org/licenses/by-sa/4.0/.
+%
+
+%
+% \brief Polymorphism strategies section.
+%
+% \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
+%
+% \version 0.1.0
+%
+% \date 06/11/2019
+%
+
+\section{Estratégias de Polimorfismo} \label{sec:polymorphism}
+
+Para permitir a execução do programa tanto em uma plataforma embarcada como em um microcomputador, utilizou-se o conceito de polimorfismo nas classes que interagem com algum tipo de periférico (\textit{hardware}) do sistema ou que dependem de algum tipo de interação com o usuário ou operador da máquina através de um determinado dispositivo.
+
+Nessas situações tem-se uma classe mãe com métodos virtuais e que descrevem de maneira genérica um dispositivo do sistema, e duas classes filhas que herdam a primeira, onde uma delas implementa o dispositivo em uma plataforma embarcada que acessa um \textit{hardware} físico e real, e a segunda que implementa o mesmo dispositivo de forma virtual e simulada para permitir a execução do \textit{software} em um microcomputador. A escolha de qual classe filha será utilizada é feita através de uma macro, que é definida durante a compilação do programa (através do parâmetro ``-D'' do gcc por exemplo).
+
+Na \autoref{tab:classes-polymorphism} encontra-se de forma resumida as classes em que se utilizou o conceito de polimorfismo para permitir a execução do programa em duas diferentes plataformas.
+
+\begin{table}[!ht]
+    \begin{center}
+        \begin{tabular}{lL{3.5cm}ll}
+            \toprule[1.5pt]
+            \multirow{2}{*}{\textit{Classe}} & \multirow{2}{*}{\textit{Descrição}}         & \multicolumn{2}{c}{\textit{Classes derivadas}}           \\
+                                             &                                             & \textit{Plataforma Embarcada} & \textit{Microcomputador} \\
+            \midrule
+            ``CanDispenser''                 & Fornece a bebida para o usuário             & ``CanDispenserLED''           & ``CanDispenserSim''      \\
+            ``CoinChanger''                  & Entrada/saída de moedas                     & ``CoinChangerButtons''        & ``CoinChangerSim''       \\
+            ``Delay''                        & Rotina de delay                             & ``Delay\_uC''                 & ``DelayLinux''           \\
+            ``Display''                      & Tela para apresentar informações ao usuário & ``LCD''                       & ``Terminal''             \\
+            ``Interface''                    & Interface de comandos do usuário            & ``Buttons''                   & ``Keyboard''             \\
+            ``Log''                          & Armazenamento de eventos do sistema         & ``SerialLog''                 & ``FileLog''              \\
+            \bottomrule[1.5pt]
+        \end{tabular}
+        \caption{Classes utilizando o conceito de polimorfismo.}
+        \label{tab:classes-polymorphism}
+    \end{center}
+\end{table}
+
+Uma classe em que também se utilizará esta estratégia é a classe de controle de tempo, que também é implementada de maneiras diferentes na plataforma embarcada (utilizando os \textit{ticks} do sistema para incrementar o tempo) e em um microcomputador (utilizando um processo separado para incrementar o tempo através de delays periódicos).
