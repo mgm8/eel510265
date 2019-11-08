@@ -22,3 +22,8 @@
 
 \section{Modelagem da Funcionalidade do Escalonador} \label{sec:scheduler}
 
+Para implementar o escalonador se utilizará a interrupção de um timer da plataforma embarcada para controlar os \textit{ticks} do sistema, ou seja, o controle de tempo. Além disso, essa rotina de interrupção também será utilizada para o controle do escalonamento das tarefas do sistema.
+
+Para armazenar a lista de tarefas a serem executadas pelo sistema, também se utilizará uma fila (implementada com uma fila duplamente encadeada, do mesmo modo que a fila das mensagens de log).
+
+O diagrama de classes da \autoref{fig:class_diagram} não contém as classes relacionadas ao escalonador de tarefas do sistema.

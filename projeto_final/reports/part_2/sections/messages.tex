@@ -22,3 +22,8 @@
 
 \section{Modelagem do Módulo de Apresentação de Mensagens} \label{sec:messages}
 
+O módulo de apresentação de mensagens será o responsável por receber, armazenar e disponibilizar as mensagens de log do sistema. Conforme especificado, essas mensagens são compostas pelo nome da bebida vendida, o preço da mesma e a data e horário da venda.
+
+Para implementar este módulo, irá se utilizar uma fila implementada através de uma lista duplamente encadeada. Desta forma, tem-se o sistema gerando as mensagens de log em um lado, e as leituras destas mensagens quando requisitado do outro lado da lista. Utilizando-se este tipo de estrutura para esta parte do programa, pode-se acessar o log de mensagens em diferentes tarefas do sistema, como por exemplo, uma tarefa gerando as mensagens quando o evento de venda ocorre, e outra tarefa lendo a fila de mensagens quando a leitura é requisitada.
+
+Para acessar as mensagens geradas durante o funcionamento da máquina, se utilizará uma porta serial (UART) da plataforma embarcada, que enviará as mensagens armazenadas na fila quando um determinado comando é enviado através da mesma. Para a variação do programa que será executada em um microcomputador, as mensagens de log serão gravadas em um arquivo de texto quando requisitado. A relação entre as classes envolvidas no sistema de log pode ser vista na parte inferior da \autoref{fig:class_diagram}.
