@@ -1,0 +1,56 @@
+%
+% main.tex
+%
+% Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
+%
+% Relatório 3 do Trabalho Final da Disciplina EEL510265.
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+% International License. To view a copy of this license,
+% visit http://creativecommons.org/licenses/by-sa/4.0/.
+%
+
+%
+% \brief Main file.
+%
+% \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
+%
+% \version 0.1.0
+%
+% \date 20/10/2019
+%
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{report}
+
+\title{Relatório 3 do Projeto Final}
+\author{Gabriel Mariano Marcelino}
+\date{21/11/2019}
+
+% File metadata
+\hypersetup
+{
+    pdfauthor	= {\theauthor},
+    pdfsubject	= {Relatório 3 do Projeto Final.},
+    pdftitle	= {\thetitle},
+    pdfkeywords	= {Sistemas Embarcados, C, C++}
+}
+
+\begin{document}
+    \pagenumbering{roman}
+
+    \input{header/titlepage}
+    \cleardoublepage
+
+    \tableofcontents
+    \cleardoublepage
+
+    \newpage
+
+    \pagenumbering{arabic}
+
+    \input{sections/introduction}
+    \input{sections/class_diagrams}
+    \input{references/references}
+\end{document}

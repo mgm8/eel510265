@@ -1,0 +1,67 @@
+%
+% report.sty
+%
+% Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
+%
+% Relatório 3 do Trabalho Final da Disciplina EEL510265.
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+% International License. To view a copy of this license,
+% visit http://creativecommons.org/licenses/by-sa/4.0/.
+%
+
+%
+% \brief Document style customization and packages.
+%
+% \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
+%
+% \version 0.1.0
+%
+% \date 20/10/2019
+%
+
+\ProvidesPackage{report}
+
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,twoside]{geometry}
+\usepackage[T1]{fontenc}  
+\usepackage[utf8]{inputenc} 
+\usepackage[brazil]{babel}
+\usepackage{ae}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{emptypage}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{lscape}
+
+% URLs font style
+\urlstyle{same}
+
+% Bibliography style
+\bibliographystyle{unsrt}
+
+% Header style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO]{\nouppercase{\rightmark}}
+\fancyhead[LE]{\nouppercase{Relatório 3 do Projeto Final}}
+\fancyfoot[RO]{\thepage}
+\fancyfoot[LE]{\thepage}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Table cell size limit and alignment
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% Fill a cell of a table
+\newcommand{\fc}{\cellcolor{gray}}
