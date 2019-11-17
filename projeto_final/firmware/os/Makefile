@@ -3,12 +3,11 @@ ifndef BUILD_DIR
 endif
 
 CXX=g++
-LIBS=../include
-FLAGS=-std=c++11 -I$(LIBS)
+FLAGS=-std=c++11
 
-all: $(BUILD_DIR)/button.o
+all: $(BUILD_DIR)/task.o
 
-$(BUILD_DIR)/button.o: button.cpp
+$(BUILD_DIR)/task.o: task.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
 
 clean:

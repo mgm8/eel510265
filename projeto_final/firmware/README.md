@@ -6,5 +6,4 @@
 
 ## Compiling and Building
 
-* ```mkdir build```
 * ```make```

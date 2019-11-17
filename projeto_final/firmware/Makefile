@@ -10,6 +10,7 @@ FLAGS=-std=c++11
 
 all:
 	$(MAKE) BUILD_DIR=$(CURDIR)/$(BUILD_DIR) -C devices
+	$(MAKE) BUILD_DIR=$(CURDIR)/$(BUILD_DIR) -C os
 	$(MAKE) BUILD_DIR=$(CURDIR)/$(BUILD_DIR) -C $(SOURCE)
 	$(CXX) $(FLAGS) $(BUILD_DIR)/*.o -o $(BUILD_DIR)/$(TARGET)
 

@@ -1,5 +1,5 @@
 /*
- * button.cpp
+ * task.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,49 +21,72 @@
  */
 
 /**
- * \brief Button implementation.
+ * \brief Task implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.3
+ * \version 0.2.8
  * 
- * \date 21/10/2019
+ * \date 17/11/2019
  * 
- * \addtogroup button
+ * \addtogroup task
  * \{
  */
 
-#include "button.h"
+#include "task.h"
 
 using namespace std;
 
-Button::Button()
+Task::Task()
 {
 }
 
-Button::Button(string label)
-    : Button()
+Task::Task(void *task, std::string name, uint32_t period, uint8_t priority)
+    : Task()
 {
-    this->set_label(label);
+    this->set_task(task);
+    this->set_name(name);
+    this->set_period(period);
+    this->set_priority(priority);
 }
 
-Button::~Button()
+Task::~Task()
 {
 }
 
-bool Button::is_pressed()
+void Task::set_task(void *t)
 {
-    return false;
+    this->task = t;
 }
 
-void Button::set_label(string label)
+void Task::set_name(string n)
 {
-    this->label = label;
+    this->name = n;
 }
 
-string Button::get_label()
+void Task::set_period(uint32_t p)
 {
-    return this->label;
+    this->period_ms = p;
 }
 
-//! \} End of button group
+void Task::set_priority(uint8_t p)
+{
+    this->priority = p;
+}
+
+string Task::get_name()
+{
+    return this->name;
+}
+
+uint32_t Task::get_period()
+{
+    return this->period_ms;
+}
+
+uint8_t Task::get_priority()
+{
+    return this->priority;
+}
+
+//! \} End of task group
