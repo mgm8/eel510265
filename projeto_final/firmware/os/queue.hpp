@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.6
+ * \version 0.2.11
  * 
  * \date 05/11/2019
  * 
@@ -37,6 +37,12 @@
 #define QUEUE_H_
 
 #include "node.hpp"
+
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
+{
 
 /**
  * \brief Queue object.
@@ -152,6 +158,8 @@ class Queue
          */
         unsigned int length;
 };
+
+}   // namespace vmos
 
 #endif // QUEUE_H_
 

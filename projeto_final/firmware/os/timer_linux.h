@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.10
+ * \version 0.2.11
  * 
  * \date 17/11/2019
  * 
@@ -38,6 +38,12 @@
 #define TIMER_LINUX_H_
 
 #include "timer.h"
+
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
+{
 
 /**
  * \brief Timer (Linux) class.
@@ -62,6 +68,8 @@ class TimerLinux: public Timer
          */
         void run();        
 };
+
+}   // namespace vmos
 
 #endif // TIMER_LINUX_H_
 

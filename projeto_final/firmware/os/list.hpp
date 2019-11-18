@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.9
+ * \version 0.2.11
  * 
  * \date 17/11/2019
  * 
@@ -37,6 +37,12 @@
 #define LIST_H_
 
 #include "node.hpp"
+
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
+{
 
 /**
  * \brief List object.
@@ -283,6 +289,8 @@ class List
          */
         unsigned int length;
 };
+
+}   // namespace vmos
 
 #endif // LIST_H_
 

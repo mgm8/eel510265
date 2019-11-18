@@ -3,7 +3,7 @@ ifndef BUILD_DIR
 endif
 
 CXX=g++
-FLAGS=-std=c++11
+FLAGS=-std=c++11 -pthread
 
 all: $(BUILD_DIR)/task.o $(BUILD_DIR)/timer.o $(BUILD_DIR)/timer_linux.o
 

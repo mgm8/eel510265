@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.10
+ * \version 0.2.11
  * 
  * \date 17/11/2019
  * 
@@ -36,6 +36,9 @@
 #include "timer.h"
 
 using namespace std;
+
+namespace vmos
+{
 
 Timer::Timer()
 {
@@ -97,5 +100,7 @@ uint32_t Timer::ticks_to_seconds(uint64_t t)
 void Timer::run()
 {
 }
+
+}   // namespace vmos
 
 //! \} End of timer group

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.5
+ * \version 0.2.11
  * 
  * \date 05/11/2019
  * 
@@ -35,6 +35,14 @@
 
 #ifndef NODE_H_
 #define NODE_H_
+
+#include <cstddef>
+
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
+{
 
 /**
  * \brief Node class.
@@ -87,6 +95,8 @@ class Node
          */
         Node *next;
 };
+
+}   // namespace vmos
 
 #endif // NODE_H_
 

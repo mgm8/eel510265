@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.10
+ * \version 0.2.11
  * 
  * \date 17/11/2019
  * 
@@ -39,6 +39,9 @@
 #include "timer_linux.h"
 
 using namespace std;
+
+namespace vmos
+{
 
 void TimerLinux::start()
 {
@@ -56,5 +59,7 @@ void TimerLinux::run()
         this->ticks++;
     }
 }
+
+}   // namespace vmos
 
 //! \} End of timer_linux group
