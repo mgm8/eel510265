@@ -1,5 +1,5 @@
 /*
- * version.h
+ * timer.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,81 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Timer implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.2.10
  * 
- * \date 20/10/2019
+ * \date 17/11/2019
  * 
- * \defgroup version Version
+ * \addtogroup timer
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "timer.h"
 
-#define FIRMWARE_VERSION            "0.2.10"
+using namespace std;
 
-#define FIRMWARE_STATUS             "Development"
+Timer::Timer()
+{
+    this->set_ticks(0);
+    this->set_tick_period(1);
+}
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+Timer::Timer(unsigned int p)
+    : Timer()
+{
+    this->set_tick_period(p);
 
-#endif // VERSION_H_
+    this->start();
+}
 
-//! \} End of version group
+Timer::~Timer()
+{
+}
+
+void Timer::start()
+{
+}
+
+void Timer::set_tick_period(unsigned int p)
+{
+    this->tick_period_ms = p;
+}
+
+void Timer::set_ticks(uint64_t t)
+{
+    this->ticks = t;
+}
+
+uint64_t Timer::get_ticks()
+{
+    return this->ticks;
+}
+
+uint32_t Timer::get_milliseconds()
+{
+    return this->ticks_to_milliseconds(this->get_ticks());
+}
+
+uint32_t Timer::get_seconds()
+{
+    return this->ticks_to_seconds(this->get_ticks());
+}
+
+uint32_t Timer::ticks_to_milliseconds(uint64_t t)
+{
+    return this->tick_period_ms*t;
+}
+
+uint32_t Timer::ticks_to_seconds(uint64_t t)
+{
+    return this->ticks_to_milliseconds(t)/1000;
+}
+
+void Timer::run()
+{
+}
+
+//! \} End of timer group

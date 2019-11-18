@@ -1,5 +1,5 @@
 /*
- * version.h
+ * timer_linux.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,48 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Timer (Linux) definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.2.10
  * 
- * \date 20/10/2019
+ * \date 17/11/2019
  * 
- * \defgroup version Version
+ * \defgroup timer_linux Linux
+ * \ingroup timer
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef TIMER_LINUX_H_
+#define TIMER_LINUX_H_
 
-#define FIRMWARE_VERSION            "0.2.10"
+#include "timer.h"
 
-#define FIRMWARE_STATUS             "Development"
+/**
+ * \brief Timer (Linux) class.
+ */
+class TimerLinux: public Timer
+{
+    public:
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        /**
+         * \brief Starts the execution of the timer.
+         *
+         * \return None.
+         */
+        void start();
 
-#endif // VERSION_H_
+    private:
 
-//! \} End of version group
+        /**
+         * \brief Timer execution.
+         *
+         * \return None.
+         */
+        void run();        
+};
+
+#endif // TIMER_LINUX_H_
+
+//! \} End of timer_linux group

@@ -1,5 +1,5 @@
 /*
- * version.h
+ * timer_linux.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,40 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Timer (Linux) implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.2.10
  * 
- * \date 20/10/2019
+ * \date 17/11/2019
  * 
- * \defgroup version Version
+ * \addtogroup timer_linux
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include <thread>
+#include <chrono>
 
-#define FIRMWARE_VERSION            "0.2.10"
+#include "timer_linux.h"
 
-#define FIRMWARE_STATUS             "Development"
+using namespace std;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+void TimerLinux::start()
+{
+    thread timer(&TimerLinux::run, this);
 
-#endif // VERSION_H_
+    timer.detach();
+}
 
-//! \} End of version group
+void TimerLinux::run()
+{
+    while(1)
+    {
+        this_thread::sleep_for(chrono::milliseconds(this->tick_period_ms));
+
+        this->ticks++;
+    }
+}
+
+//! \} End of timer_linux group
