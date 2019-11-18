@@ -1,5 +1,5 @@
 /*
- * delay_linux.cpp
+ * delay.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,33 +21,55 @@
  */
 
 /**
- * \brief Linux delay implementation.
+ * \brief Delay implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.1.10
+ * \version 0.2.12
  * 
- * \date 23/10/2019
+ * \date 18/11/2019
  * 
- * \addtogroup delay_linux
+ * \addtogroup delay
  * \{
  */
 
-#include <thread>
-#include <chrono>
+#include <stdint.h>
 
-#include "delay_linux.h"
+#include "delay.h"
 
-using namespace std;
-
-void DelayLinux::delay_ms(unsigned int ms)
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
 {
-    this_thread::sleep_for(chrono::milliseconds(ms));
-}
 
-void DelayLinux::delay_s(unsigned int sec)
-{
-    this_thread::sleep_for(chrono::seconds(sec));
-}
+    Delay::Delay(Timer *t)
+    {
+        this->timer = t;
+    }
+    
+    Delay::~Delay()
+    {
+    }
+    
+    void Delay::wait_ms(unsigned int ms)
+    {
+        uint32_t start = this->timer->get_milliseconds();
+    
+        while(this->timer->get_milliseconds() < (start + ms))
+        {
+        }
+    }
+    
+    void Delay::wait_s(unsigned int sec)
+    {
+        auto start = this->timer->get_seconds();
+    
+        while(this->timer->get_seconds() < (start + sec))
+        {
+        }
+    }
 
-//! \} End of delay_linux group
+} // namespace vmos
+
+//! \} End of delay group
