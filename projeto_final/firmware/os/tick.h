@@ -1,5 +1,5 @@
 /*
- * timer.cpp
+ * tick.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,86 +21,34 @@
  */
 
 /**
- * \brief Timer implementation.
+ * \brief Tick definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.3.1
  * 
- * \date 17/11/2019
+ * \date 18/11/2019
  * 
- * \addtogroup timer
+ * \defgroup tick Tick
+ * \ingroup os
  * \{
  */
 
-#include "timer.h"
+#ifndef TICK_H_
+#define TICK_H_
 
-using namespace std;
+#include <stdint.h>
 
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
 namespace vmos
 {
 
-Timer::Timer()
-{
-    this->set_ticks(0);
-    this->set_tick_period(1);
-}
+    typedef uint64_t Tick;
 
-Timer::Timer(unsigned int p)
-    : Timer()
-{
-    this->set_tick_period(p);
+} // namespace vmos
 
-    this->start();
-}
+#endif // TICK_H_
 
-Timer::~Timer()
-{
-}
-
-void Timer::start()
-{
-}
-
-void Timer::set_tick_period(unsigned int p)
-{
-    this->tick_period_ms = p;
-}
-
-void Timer::set_ticks(Tick t)
-{
-    this->ticks = t;
-}
-
-Tick Timer::get_ticks()
-{
-    return this->ticks;
-}
-
-Tick Timer::get_milliseconds()
-{
-    return this->ticks_to_milliseconds(this->get_ticks());
-}
-
-Tick Timer::get_seconds()
-{
-    return this->ticks_to_seconds(this->get_ticks());
-}
-
-Tick Timer::ticks_to_milliseconds(Tick t)
-{
-    return this->tick_period_ms*t;
-}
-
-Tick Timer::ticks_to_seconds(Tick t)
-{
-    return this->ticks_to_milliseconds(t)/1000;
-}
-
-void Timer::run()
-{
-}
-
-}   // namespace vmos
-
-//! \} End of timer group
+//! \} End of tick group

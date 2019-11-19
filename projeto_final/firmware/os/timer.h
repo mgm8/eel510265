@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.11
+ * \version 0.3.1
  * 
  * \date 17/11/2019
  * 
@@ -36,7 +36,7 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#include <stdint.h>
+#include "tick.h"
 
 /**
  * \brief Vending Machine Operating System namespace.
@@ -97,28 +97,28 @@ class Timer
          *
          * \return None.
          */
-        void set_ticks(uint64_t t);
+        void set_ticks(Tick t);
 
         /**
          * \brief Gets the tick count value.
          *
          * \return The tick count valur.
          */
-        uint64_t get_ticks();
+        Tick get_ticks();
 
         /**
          * \brief Gets the timer count value in milliseconds.
          *
          * \return The timer ticks in milliseconds.
          */
-        uint32_t get_milliseconds();
+        Tick get_milliseconds();
 
         /**
          * \brief Gets the timer count value in seconds.
          *
          * \return The timer ticks in seconds.
          */
-        uint32_t get_seconds();
+        Tick get_seconds();
 
         /**
          * \brief Converts a tick value to milliseconds.
@@ -127,7 +127,7 @@ class Timer
          *
          * \return The given tick value in milliseconds.
          */
-        uint32_t ticks_to_milliseconds(uint64_t t);
+        Tick ticks_to_milliseconds(Tick t);
 
         /**
          * \brief Converts a tick value to seconds.
@@ -136,7 +136,7 @@ class Timer
          *
          * \return The given tick value in seconds.
          */
-        uint32_t ticks_to_seconds(uint64_t t);
+        Tick ticks_to_seconds(Tick t);
 
     protected:
 
@@ -148,7 +148,7 @@ class Timer
         /**
          * \brief Ticks count.
          */
-        uint64_t ticks;
+        Tick ticks;
 
     private:
 
