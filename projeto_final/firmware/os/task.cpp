@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.8
+ * \version 0.3.2
  * 
  * \date 17/11/2019
  * 
@@ -37,26 +37,27 @@
 
 using namespace std;
 
+namespace vmos
+{
+
 Task::Task()
 {
+    this->ready = false;
 }
 
-Task::Task(void *task, std::string name, uint32_t period, uint8_t priority)
+Task::Task(std::string name, Tick period, unsigned int priority)
     : Task()
 {
-    this->set_task(task);
     this->set_name(name);
     this->set_period(period);
     this->set_priority(priority);
+
+    this->ready = true;
+    this->resume();
 }
 
 Task::~Task()
 {
-}
-
-void Task::set_task(void *t)
-{
-    this->task = t;
 }
 
 void Task::set_name(string n)
@@ -64,12 +65,13 @@ void Task::set_name(string n)
     this->name = n;
 }
 
-void Task::set_period(uint32_t p)
+void Task::set_period(Tick p)
 {
-    this->period_ms = p;
+    this->period = p;
+    this->delay = p;
 }
 
-void Task::set_priority(uint8_t p)
+void Task::set_priority(unsigned int p)
 {
     this->priority = p;
 }
@@ -79,14 +81,36 @@ string Task::get_name()
     return this->name;
 }
 
-uint32_t Task::get_period()
+Tick Task::get_period()
 {
-    return this->period_ms;
+    return this->period;
 }
 
-uint8_t Task::get_priority()
+unsigned int Task::get_priority()
 {
     return this->priority;
 }
+
+bool Task::is_ready()
+{
+    return this->ready;
+}
+
+bool Task::is_enabled()
+{
+    return this->enabled;
+}
+
+void Task::suspend()
+{
+    this->enabled = false;
+}
+
+void Task::resume()
+{
+    this->enabled = true;
+}
+
+} // namespace vmos
 
 //! \} End of task group

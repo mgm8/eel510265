@@ -25,11 +25,12 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.8
+ * \version 0.3.2
  * 
  * \date 17/11/2019
  * 
  * \defgroup task Task
+ * \ingroup os
  * \{
  */
 
@@ -38,7 +39,13 @@
 
 #include <string>
 
-#include <stdint.h>
+#include "tick.h"
+
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
+{
 
 /**
  * \brief Task object.
@@ -57,14 +64,13 @@ class Task
         /**
          * \brief Constructor (overloaded).
          *
-         * \param[in] task is a pointer to the task function or method.
          * \param[in] name is the name of the task as a string.
-         * \param[in] period is the period of the task in milliseconds.
+         * \param[in] period is the period of the task in ticks.
          * \param[in] priority is the priority of the task.
          *
          * \return None.
          */
-        Task(void *task, std::string name, uint32_t period, uint8_t priority);
+        Task(std::string name, Tick period, unsigned int priority);
 
         /**
          * \brief Destructor.
@@ -74,13 +80,11 @@ class Task
         ~Task();
 
         /**
-         * \brief Sets the pointer to the task function or method.
-         *
-         * \param[in] t is a pointer to the task function or method.
+         * \brief Initializes the task.
          *
          * \return None.
          */
-        void set_task(void *t);
+        virtual void init() = 0;
 
         /**
          * \brief Sets the name of the task.
@@ -94,11 +98,11 @@ class Task
         /**
          * \brief Sets the period of the task.
          *
-         * \param[in] p is the period of the task in milliseconds.
+         * \param[in] p is the period of the task in ticks.
          *
          * \return None.
          */
-        void set_period(uint32_t p);
+        void set_period(Tick p);
 
         /**
          * \brief Sets the priority of the task.
@@ -107,7 +111,7 @@ class Task
          *
          * \return None.
          */
-        void set_priority(uint8_t p);
+        void set_priority(unsigned int p);
 
         /**
          * \brief Gets the name of the task.
@@ -119,23 +123,53 @@ class Task
         /**
          * \brief Gets the period of the task.
          *
-         * \return The period of the task in milliseconds.
+         * \return The period of the task in ticks.
          */
-        uint32_t get_period();
+        Tick get_period();
 
         /**
          * \brief Gets the priority of the task.
          *
          * \return The priority of the task.].
          */
-        uint8_t get_priority();
-
-    private:
+        unsigned int get_priority();
 
         /**
-         * \brief Pointer to the task function or method.
+         * \brief Verifies if the task is ready to execute or not.
+         *
+         * \return TRUE/FALSE if the task is ready or not.
          */
-        void *task;
+        bool is_ready();
+
+        /**
+         * \brief Verifies if the task is enabled or not.
+         *
+         * \return TRUE/FALSE if the task is enaled or not.
+         */
+        bool is_enabled();
+
+        /**
+         * \brief Implementation of the task.
+         *
+         * \return None.
+         */
+        virtual void run() = 0;
+
+        /**
+         * \brief Suspend the execution of the task.
+         *
+         * \return None.
+         */
+        void suspend();
+
+        /**
+         * \brief Resume the execution of the task.
+         *
+         * \return None.
+         */
+        void resume();
+
+    private:
 
         /**
          * \brief Task name.
@@ -143,15 +177,32 @@ class Task
         std::string name;
 
         /**
-         * \brief Task period in milliseconds.
+         * \brief Task period in ticks.
          */
-        uint32_t period_ms;
+        Tick period;
 
         /**
          * \brief Task priority.
          */
-        uint8_t priority;
+        unsigned int priority;
+
+        /**
+         * \brief Is ready flag.
+         */
+        bool ready;
+
+        /**
+         * \brief Is enabled flag.
+         */
+        bool enabled;
+
+        /**
+         * \brief .
+         */
+        Tick delay;
 };
+
+}   // namespace vmos
 
 #endif // TASK_H_
 
