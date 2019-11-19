@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.2
+ * \version 0.3.4
  * 
  * \date 17/11/2019
  * 
@@ -84,7 +84,7 @@ class Task
          *
          * \return None.
          */
-        virtual void init() = 0;
+        virtual void init() { };
 
         /**
          * \brief Sets the name of the task.
@@ -153,7 +153,7 @@ class Task
          *
          * \return None.
          */
-        virtual void run() = 0;
+        virtual void run() { };
 
         /**
          * \brief Suspend the execution of the task.

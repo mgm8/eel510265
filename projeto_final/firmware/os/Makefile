@@ -5,7 +5,7 @@ endif
 CXX=g++
 FLAGS=-std=c++11 -pthread
 
-all: $(BUILD_DIR)/task.o $(BUILD_DIR)/timer.o $(BUILD_DIR)/timer_linux.o $(BUILD_DIR)/delay.o $(BUILD_DIR)/idle.o
+all: $(BUILD_DIR)/task.o $(BUILD_DIR)/timer.o $(BUILD_DIR)/timer_linux.o $(BUILD_DIR)/delay.o $(BUILD_DIR)/idle.o $(BUILD_DIR)/scheduler.o
 
 $(BUILD_DIR)/task.o: task.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
@@ -20,6 +20,9 @@ $(BUILD_DIR)/delay.o: delay.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
 
 $(BUILD_DIR)/idle.o: idle.cpp
+	$(CXX) $(FLAGS) -c $< -o $@
+
+$(BUILD_DIR)/scheduler.o: scheduler.cpp
 	$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
