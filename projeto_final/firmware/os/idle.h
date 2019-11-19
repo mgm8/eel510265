@@ -1,5 +1,5 @@
 /*
- * version.h
+ * idle.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,54 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Idle task definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.3.3
  * 
- * \date 20/10/2019
+ * \date 18/11/2019
  * 
- * \defgroup version Version
+ * \defgroup idle_task Idle Task
+ * \ingroup os
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef IDLE_H_
+#define IDLE_H_
 
-#define FIRMWARE_VERSION            "0.3.3"
+#include "task.h"
 
-#define FIRMWARE_STATUS             "Development"
+/**
+ * \brief Vending Machine Operating System namespace.
+ */
+namespace vmos
+{
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+    /**
+     * \brief Idle task.
+     */
+    class Idle: public Task
+    {
+        public:
+    
+            /**
+             * \brief Initialization of the idle task.
+             *
+             * \return None.
+             */
+            void init();
 
-#endif // VERSION_H_
+            /**
+             * \brief Idle task implementation.
+             *
+             * \return None.
+             */
+            void run();
+    };
 
-//! \} End of version group
+} // namespace vmos
+
+#endif // IDLE_H_
+
+//! \} End of idle_task group

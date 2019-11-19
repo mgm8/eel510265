@@ -1,5 +1,5 @@
 /*
- * version.h
+ * idle.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,36 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Idle task implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.3.3
  * 
- * \date 20/10/2019
+ * \date 18/11/2019
  * 
- * \defgroup version Version
+ * \addtogroup idle_task
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "idle.h"
 
-#define FIRMWARE_VERSION            "0.3.3"
+namespace vmos
+{
 
-#define FIRMWARE_STATUS             "Development"
+    void Idle::init()
+    {
+        this->set_name("idle");
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        this->set_period(1);
 
-#endif // VERSION_H_
+        this->set_priority(0);
+    }
 
-//! \} End of version group
+    void Idle::run()
+    {
+    }
+
+} // namespace vmos
+
+//! \} End of idle_task ggggg
