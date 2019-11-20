@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.11
+ * \version 0.3.5
  * 
  * \date 17/11/2019
  * 
@@ -237,9 +237,9 @@ class List
          *
          * \param[in] pos is the position of the list to read.
          *
-         * \return None.
+         * \return A reference to the data at the given list position.
          */
-        T at(unsigned int pos)
+        T& at(unsigned int pos)
         {
             Node<T> *cur = new Node<T>;
             cur = this->head;
@@ -250,6 +250,18 @@ class List
             }
 
             return cur->data;
+        }
+
+        /**
+         * \brief Subscript operator overload.
+         *
+         * \param[in] pos is the position of the list to read.
+         *
+         * \return A reference to the data at the given list position.
+         */
+        T& operator [](unsigned int pos)
+        {
+            return this->at(pos);
         }
 
         /**
