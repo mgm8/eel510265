@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.4
+ * \version 0.3.6
  * 
  * \date 17/11/2019
  * 
@@ -40,6 +40,9 @@
 #include <string>
 
 #include "tick.h"
+
+#define TASK_DEFAULT_PERIOD_TICKS       100         /**< Default period in ticks. */
+#define TASK_DEFAULT_PRIORITY           (Tick)0     /**< Default priority. */
 
 /**
  * \brief Vending Machine Operating System namespace.
@@ -70,7 +73,18 @@ class Task
          *
          * \return None.
          */
-        Task(std::string name, Tick period, unsigned int priority);
+        Task(std::string name, int period, int priority);
+
+        /**
+         * \brief Constructor (overloaded).
+         *
+         * \param[in] name is the name of the task as a string.
+         * \param[in] period is the period of the task in ticks.
+         * \param[in] priority is the priority of the task.
+         *
+         * \return None.
+         */
+        Task(const char *name, int period, int priority);
 
         /**
          * \brief Destructor.
@@ -80,7 +94,7 @@ class Task
         ~Task();
 
         /**
-         * \brief Initializes the task.
+         * \brief Initializes the task (virtual).
          *
          * \return None.
          */
@@ -94,6 +108,15 @@ class Task
          * \return None.
          */
         void set_name(std::string n);
+
+        /**
+         * \brief Sets the name of the task.
+         *
+         * \param[in] n is a string with the name of the task.
+         *
+         * \return None.
+         */
+        void set_name(const char *n);
 
         /**
          * \brief Sets the period of the task.
@@ -142,6 +165,15 @@ class Task
         bool is_ready();
 
         /**
+         * \brief Sets the "ready" state of the task.
+         *
+         * \param[in] r is the "ready" state value (TRUE/FALSE).
+         *
+         * \return None.
+         */
+        void set_ready(bool r);
+
+        /**
          * \brief Verifies if the task is enabled or not.
          *
          * \return TRUE/FALSE if the task is enaled or not.
@@ -169,6 +201,11 @@ class Task
          */
         void resume();
 
+        /**
+         * \brief Task delay counter.
+         */
+        Tick delay;
+
     private:
 
         /**
@@ -195,11 +232,6 @@ class Task
          * \brief Is enabled flag.
          */
         bool enabled;
-
-        /**
-         * \brief .
-         */
-        Tick delay;
 };
 
 }   // namespace vmos
