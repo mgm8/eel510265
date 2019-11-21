@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.4
+ * \version 0.3.8
  * 
  * \date 17/11/2019
  * 
@@ -33,8 +33,12 @@
  * \{
  */
 
+#include <chrono>
+#include <thread>
+
 #include "scheduler.h"
 #include "idle.h"
+#include "timer_linux.h"
 
 using namespace std;
 
@@ -43,29 +47,34 @@ namespace vmos
 
 Scheduler::Scheduler()
 {
-    this->add_task(Idle());
+    this->set_timer(new TimerLinux);
+
+    this->add_task(new Idle());
+
+    this->timer->set_tick_period(SYSTEM_TICK_PERIOD_MS);
+    this->timer->set_tasks_table(&this->tasks);
 }
 
-Scheduler::Scheduler(List<Task> t)
+Scheduler::Scheduler(List<Task *> t)
     : Scheduler()
 {
-    this->tasks = t;
+    this->add_task(t);
 }
 
 Scheduler::~Scheduler()
 {
 }
 
-void Scheduler::add_task(Task t)
+void Scheduler::add_task(Task *t)
 {
     this->tasks.push_back(t);
 }
 
-void Scheduler::add_task(List<Task> t)
+void Scheduler::add_task(List<Task *> t)
 {
     for(unsigned int i=0; i<t.size(); i++)
     {
-        this->tasks.push_back(t.at(i));
+        this->tasks.push_back(t[i]);
     }
 }
 
@@ -78,22 +87,42 @@ void Scheduler::delete_task(string name)
 {
     for(unsigned int i=0; i<this->tasks.size(); i++)
     {
-        if (this->tasks.at(i).get_name() == name)
+        if (this->tasks[i]->get_name() == name)
         {
             this->tasks.erase(i);
         }
     }
 }
 
+void Scheduler::delete_task(const char *name)
+{
+    this->delete_task(string(name));
+}
+
+void Scheduler::set_timer(Timer *t)
+{
+    this->timer = t;
+}
+
 void Scheduler::run()
 {
+    for(unsigned int i=0; i<this->tasks.size(); i++)
+    {
+        this->tasks[i]->init();
+    }
+
+    this->timer->start();
+
     while(1)
     {
+        this_thread::sleep_for(chrono::milliseconds(SYSTEM_TICK_PERIOD_MS));
+
         for(unsigned int i=0; i<this->tasks.size(); i++)
         {
-            if (this->tasks.at(i).is_enabled())
+            if (this->tasks[i]->is_enabled() and this->tasks[i]->is_ready())
             {
-                this->tasks.at(i).run();
+                this->tasks[i]->run();
+                this->tasks[i]->set_ready(false);
             }
         }
     }

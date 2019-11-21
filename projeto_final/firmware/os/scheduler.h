@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.4
+ * \version 0.3.8
  * 
  * \date 17/11/2019
  * 
@@ -41,6 +41,9 @@
 
 #include "task.h"
 #include "list.hpp"
+#include "timer.h"
+
+#define SYSTEM_TICK_PERIOD_MS       10  /**< Tick perios in milliseconds. */
 
 /**
  * \brief Vending Machine Operating System namespace.
@@ -69,7 +72,7 @@ class Scheduler
          *
          * \return None.
          */
-        Scheduler(List<Task> t);
+        Scheduler(List<Task *> t);
 
         /**
          * \brief Destructor.
@@ -85,7 +88,7 @@ class Scheduler
          *
          * \return None.
          */
-        void add_task(Task t);
+        void add_task(Task *t);
 
         /**
          * \brief Adds a new task to the tasks list (overloaded).
@@ -94,7 +97,7 @@ class Scheduler
          *
          * \return None.
          */
-        void add_task(List<Task> t);
+        void add_task(List<Task *> t);
 
         /**
          * \brief Deletes a task from the tasks list by its index.
@@ -115,6 +118,24 @@ class Scheduler
         void delete_task(std::string name);
 
         /**
+         * \brief Deletes a task from the task list by its name (overloaded).
+         *
+         * \param[in] name is the name of the teask.
+         *
+         * \return None.
+         */
+        void delete_task(const char *name);
+
+        /**
+         * \brief Sets the scheduler timer.
+         *
+         * \param[in] t is a pointer to a vmos::Timer object.
+         *
+         * \return None.
+         */
+        void set_timer(Timer *t);
+
+        /**
          * \brief Execution of the scheduler.
          *
          * \return None.
@@ -126,7 +147,12 @@ class Scheduler
         /**
          * \brief Tasks list.
          */
-        List<Task> tasks;
+        List<Task *> tasks;
+
+        /**
+         * \brief System tick timer.
+         */
+        Timer *timer;
 };
 
 } // namespace vmos
