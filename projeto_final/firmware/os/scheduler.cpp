@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.8
+ * \version 0.3.9
  * 
  * \date 17/11/2019
  * 
@@ -74,7 +74,7 @@ void Scheduler::add_task(List<Task *> t)
 {
     for(unsigned int i=0; i<t.size(); i++)
     {
-        this->tasks.push_back(t[i]);
+        this->add_task(t[i]);
     }
 }
 
@@ -119,10 +119,33 @@ void Scheduler::run()
 
         for(unsigned int i=0; i<this->tasks.size(); i++)
         {
+            this->sort_tasks_by_priority();
+
             if (this->tasks[i]->is_enabled() and this->tasks[i]->is_ready())
             {
                 this->tasks[i]->run();
                 this->tasks[i]->set_ready(false);
+            }
+        }
+    }
+}
+
+void Scheduler::sort_tasks_by_priority()
+{
+    // Bubble sort algorithm (descending order)
+    Task *buf;
+    for(unsigned int i=0; i<this->tasks.size(); ++i)
+    {
+        for(unsigned int j=i+1; j<this->tasks.size(); ++j)
+        {
+            if (this->tasks[i]->get_priority() < this->tasks[j]->get_priority())
+            {
+                if (this->tasks[i]->is_enabled() and this->tasks[i]->is_ready())
+                {
+                    buf = this->tasks[i];
+                    this->tasks[i] = this->tasks[j];
+                    this->tasks[j] = buf;
+                }
             }
         }
     }

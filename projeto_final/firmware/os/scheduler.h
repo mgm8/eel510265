@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.8
+ * \version 0.3.9
  * 
  * \date 17/11/2019
  * 
@@ -153,6 +153,13 @@ class Scheduler
          * \brief System tick timer.
          */
         Timer *timer;
+
+        /**
+         * \brief Sort the tasks table by the priority of the tasks.
+         *
+         * \return None.
+         */
+        void sort_tasks_by_priority();
 };
 
 } // namespace vmos
