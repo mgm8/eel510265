@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.1
+ * \version 0.3.7
  * 
  * \date 17/11/2019
  * 
@@ -37,6 +37,8 @@
 #define TIMER_H_
 
 #include "tick.h"
+#include "task.h"
+#include "list.hpp"
 
 /**
  * \brief Vending Machine Operating System namespace.
@@ -100,6 +102,15 @@ class Timer
         void set_ticks(Tick t);
 
         /**
+         * \brief Sets the task table pointer.
+         *
+         * \param[in] t is a pointer to task table list.
+         *
+         * \return None.
+         */
+        void set_tasks_table(List<Task *> *t);
+
+        /**
          * \brief Gets the tick count value.
          *
          * \return The tick count valur.
@@ -149,6 +160,18 @@ class Timer
          * \brief Ticks count.
          */
         Tick ticks;
+
+        /**
+         * \brief Tasks table pointer.
+         */
+        List<Task *> *tasks_table;
+
+        /**
+         * \brief Updates the tasks table (should be executed at every tick).
+         *
+         * \return None.
+         */
+        void update_tasks_table();
 
     private:
 

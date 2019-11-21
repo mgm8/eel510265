@@ -25,14 +25,14 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.1
+ * \version 0.3.7
  * 
  * \date 17/11/2019
  * 
  * \addtogroup timer
  * \{
  */
-
+#include <iostream>
 #include "timer.h"
 
 using namespace std;
@@ -72,6 +72,11 @@ void Timer::set_ticks(Tick t)
     this->ticks = t;
 }
 
+void Timer::set_tasks_table(List<Task *> *t)
+{
+    this->tasks_table = t;
+}
+
 Tick Timer::get_ticks()
 {
     return this->ticks;
@@ -95,6 +100,23 @@ Tick Timer::ticks_to_milliseconds(Tick t)
 Tick Timer::ticks_to_seconds(Tick t)
 {
     return this->ticks_to_milliseconds(t)/1000;
+}
+
+void Timer::update_tasks_table()
+{
+    for(unsigned int i=0; i<this->tasks_table->size(); i++)
+    {
+        if (this->tasks_table->at(i)->is_enabled() and (this->tasks_table->at(i)->delay != 0))
+        {
+            this->tasks_table->at(i)->delay--;
+
+            if (this->tasks_table->at(i)->delay == 0)
+            {
+                this->tasks_table->at(i)->set_ready(true);
+                this->tasks_table->at(i)->delay = this->tasks_table->at(i)->get_period();
+            }
+        }
+    }
 }
 
 void Timer::run()

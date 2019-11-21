@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.3
+ * \version 0.3.7
  * 
  * \date 18/11/2019
  * 
@@ -53,7 +53,7 @@ namespace vmos
         public:
     
             /**
-             * \brief Initialization of the idle task.
+             * \brief Idle task initialization.
              *
              * \return None.
              */

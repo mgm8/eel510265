@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.3
+ * \version 0.3.7
  * 
  * \date 18/11/2019
  * 
@@ -42,9 +42,9 @@ namespace vmos
     {
         this->set_name("idle");
 
-        this->set_period(1);
+        this->set_period(10);       // 10 ticks
 
-        this->set_priority(0);
+        this->set_priority(0);      // Lowest priority
     }
 
     void Idle::run()

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.6
+ * \version 0.3.7
  * 
  * \date 17/11/2019
  * 
@@ -42,7 +42,7 @@ namespace vmos
 
 Task::Task()
 {
-    this->delay = 0;
+    this->delay = TASK_DEFAULT_PERIOD_TICKS;
     this->set_ready(false);
     this->set_name("task");
     this->set_period(TASK_DEFAULT_PERIOD_TICKS);
@@ -83,6 +83,7 @@ void Task::set_name(const char *n)
 void Task::set_period(Tick p)
 {
     this->period = p;
+    this->delay = p;
 }
 
 void Task::set_priority(unsigned int p)

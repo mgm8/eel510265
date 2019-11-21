@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.11
+ * \version 0.3.7
  * 
  * \date 17/11/2019
  * 
@@ -57,6 +57,8 @@ void TimerLinux::run()
         this_thread::sleep_for(chrono::milliseconds(this->tick_period_ms));
 
         this->ticks++;
+
+        this->update_tasks_table();
     }
 }
 
