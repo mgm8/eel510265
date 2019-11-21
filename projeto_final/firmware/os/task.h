@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.6
+ * \version 0.3.10
  * 
  * \date 17/11/2019
  * 
@@ -40,6 +40,7 @@
 #include <string>
 
 #include "tick.h"
+#include "timer.h"
 
 #define TASK_DEFAULT_PERIOD_TICKS       100         /**< Default period in ticks. */
 #define TASK_DEFAULT_PRIORITY           (Tick)0     /**< Default priority. */
@@ -49,6 +50,8 @@
  */
 namespace vmos
 {
+
+class Timer;
 
 /**
  * \brief Task object.
@@ -205,6 +208,11 @@ class Task
          * \brief Task delay counter.
          */
         Tick delay;
+
+        /**
+         * \brief Pointer to the system timer.
+         */
+        Timer *timer;
 
     private:
 
