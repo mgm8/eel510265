@@ -1,5 +1,5 @@
 /*
- * version.h
+ * time_control.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,51 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Time control task definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.0
  * 
- * \date 20/10/2019
+ * \date 24/11/2019
  * 
- * \defgroup version Version
+ * \defgroup time_contorl Time Control
+ * \ingroup tasks
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef TIME_CONTROL_H_
+#define TIME_CONTROL_H_
 
-#define FIRMWARE_VERSION            "0.4.0"
+#include "clock_calendar.h"
+#include "os/task.h"
 
-#define FIRMWARE_STATUS             "Development"
+extern ClockCalendar datetime;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+/**
+ * \brief Time control task.
+ */
+class TaskTimeControl: public vmos::Task
+{
+    public:
 
-#endif // VERSION_H_
+        /**
+         * \brief Task initialization.
+         *
+         * \return None.
+         */
+        void init();
 
-//! \} End of version group
+        /**
+         * \brief Time control task implementation.
+         *
+         * This taks increments the system datetime at every second.
+         *
+         * \return None.
+         */
+        void run();
+};
+
+#endif // TIME_CONTROL_H_
+
+//! \} End of time_control group

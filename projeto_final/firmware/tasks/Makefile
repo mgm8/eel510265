@@ -1,0 +1,16 @@
+ifndef BUILD_DIR
+	BUILD_DIR=.
+endif
+
+CXX=g++
+INC=../include
+PROJ_ROOT=../
+FLAGS=-std=c++11 -I$(INC) -I$(PROJ_ROOT)
+
+all: $(BUILD_DIR)/time_control.o
+
+$(BUILD_DIR)/time_control.o: time_control.cpp
+	$(CXX) $(FLAGS) -c $< -o $@
+
+clean:
+	rm $(BUILD_DIR)/*.o

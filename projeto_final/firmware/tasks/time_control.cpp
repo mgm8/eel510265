@@ -1,5 +1,5 @@
 /*
- * version.h
+ * time_control.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,34 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Time control task implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.0
  * 
- * \date 20/10/2019
+ * \date 24/11/2019
  * 
- * \defgroup version Version
+ * \addtogroup time_control
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include "time_control.h"
 
-#define FIRMWARE_VERSION            "0.4.0"
+ClockCalendar datetime;
 
-#define FIRMWARE_STATUS             "Development"
+void TaskTimeControl::init()
+{
+    this->set_name("time_control");
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+    this->set_period(1000);  // 1000 ticks = 1000 ms
 
-#endif // VERSION_H_
+    this->set_priority(1);
+}
 
-//! \} End of version group
+void TaskTimeControl::run()
+{
+    datetime.increment();
+}
+
+//! \} End of time_control group
