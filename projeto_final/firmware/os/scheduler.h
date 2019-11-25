@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.9
+ * \version 0.4.3
  * 
  * \date 17/11/2019
  * 
@@ -43,7 +43,7 @@
 #include "list.hpp"
 #include "timer.h"
 
-#define SYSTEM_TICK_PERIOD_MS       10  /**< Tick perios in milliseconds. */
+#define SYSTEM_TICK_PERIOD_MS       1   /**< Tick perios in milliseconds. */
 
 /**
  * \brief Vending Machine Operating System namespace.
