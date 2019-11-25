@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.4
+ * \version 0.4.4
  * 
  * \date 21/10/2019
  * 
@@ -44,6 +44,8 @@
 #include <can_dispenser_sim/can_dispenser_sim.h>
 #include <delay_linux.h>
 
+#include <version.h>
+
 using namespace std;
 
 VendingMachine::VendingMachine()
@@ -61,6 +63,10 @@ VendingMachine::~VendingMachine()
 
 int VendingMachine::setup()
 {
+    this->display->write("Vending Machine v");
+    this->display->write(FIRMWARE_VERSION);
+    this->display->write("\n\r");
+
     this->display = new Terminal;
     this->interface = new Keyboard;
     this->coin_changer = new CoinChangerSim;
