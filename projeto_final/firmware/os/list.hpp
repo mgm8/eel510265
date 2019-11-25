@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.3.5
+ * \version 0.4.1
  * 
  * \date 17/11/2019
  * 
@@ -262,6 +262,19 @@ class List
         T& operator [](unsigned int pos)
         {
             return this->at(pos);
+        }
+
+        /**
+         * \brief Clears all the nodes of the list.
+         *
+         * \return None.
+         */
+        void clear()
+        {
+            for(unsigned int i=0; i<this->size(); i++)
+            {
+                this->pop_back();
+            }
         }
 
         /**
