@@ -1,5 +1,5 @@
 /*
- * version.h
+ * save_log.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,54 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Log saving task definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.2
  * 
- * \date 20/10/2019
+ * \date 25/11/2019
  * 
- * \defgroup version Version
+ * \defgroup save_log Save Log
+ * \ingroup tasks
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef SAVE_LOG_H_
+#define SAVE_LOG_H_
 
-#define FIRMWARE_VERSION            "0.4.2"
+#include "os/task.h"
+#include "os/queue.hpp"
+#include "log_entry.h"
 
-#define FIRMWARE_STATUS             "Development"
+#define VM_LOG_FILE     "vending_machine_logs.csv"
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+extern vmos::Queue<LogEntry> system_log;
 
-#endif // VERSION_H_
+/**
+ * \brief Log saving task.
+ */
+class TaskSaveLog: public vmos::Task
+{
+    public:
 
-//! \} End of version group
+        /**
+         * \brief Task initialization.
+         *
+         * \return None.
+         */
+        void init();
+
+        /**
+         * \brief Log saving task implementation.
+         *
+         * This task saves the log queue entries at every execution.
+         *
+         * \return None.
+         */
+        void run();
+};
+
+#endif // SAVE_LOG_H_
+
+//! \} End of save_log group

@@ -1,5 +1,5 @@
 /*
- * version.h
+ * log_entry.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,40 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Log entry definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.2
  * 
- * \date 20/10/2019
+ * \date 06/11/2019
  * 
- * \defgroup version Version
+ * \defgroup log_entry Log Entry
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef LOG_ENTRY_H_
+#define LOG_ENTRY_H_
 
-#define FIRMWARE_VERSION            "0.4.2"
+#include "clock_calendar.h"
+#include "drink.h"
 
-#define FIRMWARE_STATUS             "Development"
+/**
+ * \brief Log entry.
+ */
+struct LogEntry
+{
+    /**
+     * \brief Date and time of the log entry.
+     */
+    ClockCalendar datetime;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+    /**
+     * \brief Drink of the log entry.
+     */
+    Drink drink;
+};
 
-#endif // VERSION_H_
+#endif // LOG_ENTRY_H_
 
-//! \} End of version group
+//! \} End of log_entry group
