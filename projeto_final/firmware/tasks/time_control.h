@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.0
+ * \version 0.4.7
  * 
  * \date 24/11/2019
  * 
@@ -37,10 +37,7 @@
 #ifndef TIME_CONTROL_H_
 #define TIME_CONTROL_H_
 
-#include "clock_calendar.h"
 #include "os/task.h"
-
-extern ClockCalendar datetime;
 
 /**
  * \brief Time control task.

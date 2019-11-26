@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.5
+ * \version 0.4.7
  * 
  * \date 21/10/2019
  * 
@@ -40,6 +40,7 @@
 #include "interface.h"
 #include "coin_changer.h"
 #include "can_dispenser.h"
+#include "clock_calendar.h"
 
 #define VENDING_MACHINE_STATUS_OK       1
 
@@ -78,17 +79,22 @@ class VendingMachine
          */
         int run();
 
+        /**
+         * \brief Messages display.
+         */
+        Display *display;
+
+        /**
+         * \brief System datetime.
+         */
+        ClockCalendar datetime;
+
     private:
 
         /**
          * \brief User interface.
          */
         Interface *interface;
-
-        /**
-         * \brief Messages display.
-         */
-        Display *display;
 
         /**
          * \brief Coin changer device.

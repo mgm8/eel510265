@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.0
+ * \version 0.4.7
  * 
  * \date 24/11/2019
  * 
@@ -33,9 +33,8 @@
  * \{
  */
 
+#include "vending_machine.h"
 #include "time_control.h"
-
-ClockCalendar datetime;
 
 void TaskTimeControl::init()
 {
@@ -48,7 +47,8 @@ void TaskTimeControl::init()
 
 void TaskTimeControl::run()
 {
-    datetime.increment();
+    // Increment the system time by 1 second
+    vending_machine.datetime.increment();
 }
 
 //! \} End of time_control group
