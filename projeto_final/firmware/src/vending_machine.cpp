@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.4
+ * \version 0.4.5
  * 
  * \date 21/10/2019
  * 
@@ -42,11 +42,13 @@
 #include <keyboard/keyboard.h>
 #include <coin_changer_sim/coin_changer_sim.h>
 #include <can_dispenser_sim/can_dispenser_sim.h>
-#include <delay_linux.h>
 
 #include <version.h>
 
 using namespace std;
+using namespace vmos;
+
+VendingMachine vending_machine;
 
 VendingMachine::VendingMachine()
 {
@@ -58,26 +60,26 @@ VendingMachine::~VendingMachine()
     delete this->interface;
     delete this->coin_changer;
     delete this->can_dispenser;
-    delete this->delay;
+//    delete this->delay;
 }
 
 int VendingMachine::setup()
 {
-    this->display->write("Vending Machine v");
-    this->display->write(FIRMWARE_VERSION);
-    this->display->write("\n\r");
-
     this->display = new Terminal;
     this->interface = new Keyboard;
     this->coin_changer = new CoinChangerSim;
     this->can_dispenser = new CanDispenserSim;
 
-    this->delay = new DelayLinux;
+//    this->delay = new Delay;
 
     if (this->display->init() != DISPLAY_STATUS_OK)
     {
         return -1;
     }
+
+    this->display->write("Vending Machine v");
+    this->display->write(FIRMWARE_VERSION);
+    this->display->write("\n\r");
 
     if (this->interface->init() != INTERFACE_STATUS_OK)
     {
@@ -105,6 +107,7 @@ int VendingMachine::setup()
 
 int VendingMachine::run()
 {
+/*
     while(1)
     {
         this->display->clear();
@@ -154,13 +157,13 @@ int VendingMachine::run()
                         this->display->write(to_string(total_value));
                         this->display->write("\n\r");
 
-                        this->delay->delay_ms(1000);
+                        this->delay->wait_ms(1000);
 
                         if (this->interface->read() == INTERFACE_DEV_PRESSED)
                         {
                             this->coin_changer->give_change(total_value);
 
-                            this->delay->delay_ms(2000);
+                            this->delay->wait_ms(2000);
 
                             break;
                         }
@@ -177,7 +180,7 @@ int VendingMachine::run()
                         {
                             this->can_dispenser->release_can(stoi(choosed_drink.get_id()));
 
-                            this->delay->delay_ms(3000);
+                            this->delay->wait_ms(3000);
 
                             break;
                         }
@@ -186,11 +189,11 @@ int VendingMachine::run()
                             // Exchange
                             this->coin_changer->give_change(total_value - choosed_drink.get_price());
 
-                            this->delay->delay_ms(1000);
+                            this->delay->wait_ms(1000);
 
                             this->can_dispenser->release_can(stoi(choosed_drink.get_id()));
 
-                            this->delay->delay_ms(3000);
+                            this->delay->wait_ms(3000);
 
                             break;
                         }
@@ -201,13 +204,13 @@ int VendingMachine::run()
                     }
                 }
 
-                this->delay->delay_ms(1000);
+                this->delay->wait_ms(1000);
             }
         }
 
-        this->delay->delay_ms(500);
+        this->delay->wait_ms(500);
     }
-
+*/
     return 1;
 }
 

@@ -1,5 +1,5 @@
 /*
- * version.h
+ * startup.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,46 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Startup task definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.5
  * 
- * \date 20/10/2019
+ * \date 21/11/2019
  * 
- * \defgroup version Version
+ * \defgroup startup Startup
+ * \ingroup tasks
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef STARTUP_H_
+#define STARTUP_H_
 
-#define FIRMWARE_VERSION            "0.4.5"
+#include "os/task.h"
 
-#define FIRMWARE_STATUS             "Development"
+/**
+ * \brief Startup task.
+ */
+class TaskStartup: public vmos::Task
+{
+    public:
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+        /**
+         * \brief Task initialization.
+         *
+         * \return None.
+         */
+        void init();
 
-#endif // VERSION_H_
+        /**
+         * \brief Task implementation.
+         *
+         * \return None.
+         */
+        void run();
+};
 
-//! \} End of version group
+#endif // STARTUP_H_
+
+//! \} End of startup group

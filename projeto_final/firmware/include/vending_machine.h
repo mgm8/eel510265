@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.0
+ * \version 0.4.5
  * 
  * \date 21/10/2019
  * 
@@ -40,7 +40,6 @@
 #include "interface.h"
 #include "coin_changer.h"
 #include "can_dispenser.h"
-#include "delay.h"
 
 #define VENDING_MACHINE_STATUS_OK       1
 
@@ -104,8 +103,10 @@ class VendingMachine
         /**
          * \brief Delay.
          */
-        Delay *delay;
+//        vmos::Delay *delay;
 };
+
+extern VendingMachine vending_machine;
 
 #endif // VENDING_MACHINE_H_
 

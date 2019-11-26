@@ -1,5 +1,5 @@
 /*
- * version.h
+ * startup.cpp
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,40 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Startup task implementation.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.5
  * 
- * \date 20/10/2019
+ * \date 20/11/2019
  * 
- * \defgroup version Version
+ * \addtogroup startup
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#include <vending_machine.h>
 
-#define FIRMWARE_VERSION            "0.4.5"
+#include "startup.h"
 
-#define FIRMWARE_STATUS             "Development"
+using namespace vmos;
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+void TaskStartup::init()
+{
+    this->set_name("startup");
 
-#endif // VERSION_H_
+    this->set_period(50);       // 50 ticks = 500 ms
 
-//! \} End of version group
+    this->set_priority(10);     // High priority
+}
+
+void TaskStartup::run()
+{
+    // System initialization
+    vending_machine.setup();
+
+    // Suspend the task
+    this->suspend();
+}
+
+//! \} End of startup group
