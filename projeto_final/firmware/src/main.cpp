@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.0
+ * \version 0.4.6
  * 
  * \date 20/10/2019
  * 
@@ -33,20 +33,25 @@
  * \{
  */
 
-#include <vending_machine.h>
+#include <os/scheduler.h>
+
+#include <tasks/startup.h>
+#include <tasks/time_control.h>
+#include <tasks/save_log.h>
+
+using namespace vmos;
 
 int main(int argc, char *argv[])
 {
-    VendingMachine vending_machine;
+    Scheduler vm_scheduler;
 
-    if (vending_machine.setup() == VENDING_MACHINE_STATUS_OK)
-    {
-        return vending_machine.run();
-    }
-    else
-    {
-        return -1;      // Error during initialization
-    }
+    vm_scheduler.add_task(new TaskStartup());
+    vm_scheduler.add_task(new TaskTimeControl());
+    vm_scheduler.add_task(new TaskSaveLog());
+
+    vm_scheduler.run();
+
+    return 0;
 }
 
 //! \} End of main group

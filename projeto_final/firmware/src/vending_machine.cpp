@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.5
+ * \version 0.4.6
  * 
  * \date 21/10/2019
  * 
@@ -46,7 +46,6 @@
 #include <version.h>
 
 using namespace std;
-using namespace vmos;
 
 VendingMachine vending_machine;
 
