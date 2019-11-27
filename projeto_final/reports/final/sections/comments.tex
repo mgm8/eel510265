@@ -1,0 +1,31 @@
+%
+% comments.tex
+%
+% Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
+%
+% Relatório 3 do Trabalho Final da Disciplina EEL510265.
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+% International License. To view a copy of this license,
+% visit http://creativecommons.org/licenses/by-sa/4.0/.
+%
+
+%
+% \brief General comments section.
+%
+% \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
+%
+% \version 0.1.0
+%
+% \date 21/11/2019
+%
+
+\section{Comentários} \label{sec:comments}
+
+A utilização de uma linguagem de alto nível e orientada a objetos como o C++ para um sistema embarcado desse tipo traz aspectos positivos e negativos. A orientação a objetos permite uma maior organização do código em relação a uma linguagem não orientada. Cada dispositivo, subsistema ou módulo é facilmente descrito de forma fechada em uma classe. Um aspecto negativo é a utilização deste tipo de linguagem de alto nível para acessar recursos de baixo nível do processador, que acabam forçando a realização práticas pouco convencionais ou que quebram alguns conceitos da linguagem.
+
+\subsection{Recursos Utilizados}
+
+Um recurso que foi utilizado extensivamente neste projeto, foi o conceito de poliformismo (devido aos requisitos, onde o \textit{software} deve ser compilável e executável em uma plataforma embarcada e em um microcomputador). Como estas duas plataformas possuem características de interação com o usuário e periféricos diferentes, foi necessário desenvolver duas variações de um mesmo tipo de classe: uma para ser embarcada e outra para ser utilizada na versão de testes/desenvolvimento para microcomputadores. Assim, no momento da compilação, uma das duas classes é utilizada de acordo com a plataforma alvo desejada.
+
+Até o momento, não foram encontrados limitações de recursos da linguagem. Não houve problemas de compilação ou limitação da plataforma alvo com relação aos recursos do C++ até o momento nas plataformas testadas.

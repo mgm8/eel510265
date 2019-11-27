@@ -1,0 +1,40 @@
+%
+% architecture.tex
+%
+% Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
+%
+% Relatório 3 do Trabalho Final da Disciplina EEL510265.
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+% International License. To view a copy of this license,
+% visit http://creativecommons.org/licenses/by-sa/4.0/.
+%
+
+%
+% \brief System architecture section.
+%
+% \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
+%
+% \version 0.1.0
+%
+% \date 21/11/2019
+%
+
+\section{Arquitetura do Sistema} \label{sec:architecture}
+
+\subsection{Organização do Escalonador}
+
+O escalonador do sistema foi implementado na forma de uma classe, contendo todos os parâmetros e métodos necessários para o funcionamento do mesmo. Este utiliza algumas classes como suporte para a sua execução, como a classe ``\textit{Timer}'', que é responsável pelo gerenciamento do contador de \textit{ticks} do sistema (ou seja, o controle de tempo), a classe ``\textit{Task}'' que implementa uma tarefa do sistema (todas as tarefas devem herdar essa classe), e outras classes que implementam estrutura de dados, como as classes ``List'' e ``Queue'' (lista e fila respectivamente).
+
+Para a implementação das tarefas, é necessário implementar as mesmas na forma de uma classe que herda a classe ``Task''. Na respectiva classe da tarefa, deve-se implementar os métodos ``\textit{void init()}'' e ``\textit{void run()}'', que são chamados durante a execução do escalonador (o primeiro, uma única ver, e o segundo periodicamente de acordo com os parâmetros de configuração da tarefa).
+
+\subsection{Camadas de Software}
+
+Todo sistema foi organizado e dividido em algumas camadas de abstração. Desta forma, para um melhor entendimento e maior organização, cada camada encontra-se em uma respectiva pasta contendo todos os arquivos fonte referentes a mesma. A divisão de camadas encontra-se listada logo abaixo:
+
+\begin{itemize}
+    \item ``\textbf{hal}'' (\textit{Hardware Abstraction Layer}): Arquivos referentes às rotinas de acesso aos periféricos do microcontrolador da plataforma embarcada. Esta camada só é utilizada na versão embarcada do \textit{software}, sendo não utilizada na variação para microcomputadores.
+    \item ``\textbf{devices}'': Abstração dos dispositivos e periféricos do sistema (externos ao microcontrolador), com por exemplo o \textit{display} de dados, os botões de comando, etc.
+    \item ``\textbf{os}'' (\textit{Operating System}): Arquivos relativos ao escalonador de tarefas e às estrutura de dados (listas, filas, etc.).
+    \item ``\textbf{tasks}'': Tarefas dos sistema, a serem executadas pelo escalonador.
+\end{itemize}
