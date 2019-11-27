@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.9
+ * \version 0.5.3
  * 
  * \date 21/10/2019
  * 
@@ -82,13 +82,6 @@ class VendingMachine
         int setup();
 
         /**
-         * \brief Executes the vending machine.
-         *
-         * \return Error code uppon termination.
-         */
-        int run();
-
-        /**
          * \brief Messages display.
          */
         Display *display;
@@ -127,13 +120,6 @@ class VendingMachine
          * \brief Drinks buffer.
          */
         Drink drinks_buffer;
-
-    private:
-
-        /**
-         * \brief Delay.
-         */
-//        vmos::Delay *delay;
 };
 
 extern VendingMachine vending_machine;
