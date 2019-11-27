@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.10
+ * \version 0.5.2
  * 
  * \date 26/11/2019
  * 
@@ -55,6 +55,8 @@ void TaskReadOption::init()
 
 void TaskReadOption::run()
 {
+    vending_machine.display->clear();
+
     // Print instruction on the display
     vending_machine.display->write("Select an option\n\r");
 

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.8
+ * \version 0.5.2
  * 
  * \date 21/10/2019
  * 
@@ -58,7 +58,6 @@ VendingMachine::~VendingMachine()
     delete this->interface;
     delete this->coin_changer;
     delete this->can_dispenser;
-//    delete this->delay;
 }
 
 int VendingMachine::setup()
@@ -68,13 +67,12 @@ int VendingMachine::setup()
     this->coin_changer = new CoinChangerSim;
     this->can_dispenser = new CanDispenserSim;
 
-//    this->delay = new Delay;
-
     if (this->display->init() != DISPLAY_STATUS_OK)
     {
         return -1;
     }
 
+    this->display->clear();
     this->display->write("Vending Machine v");
     this->display->write(FIRMWARE_VERSION);
     this->display->write("\n\r");

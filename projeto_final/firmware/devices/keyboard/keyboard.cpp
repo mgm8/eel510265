@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.3
+ * \version 0.5.2
  * 
  * \date 22/10/2019
  * 
@@ -34,6 +34,9 @@
  */
 
 #include <iostream>
+
+#include <sys/select.h>
+#include <unistd.h>
 
 #include "keyboard.h"
 
@@ -48,11 +51,25 @@ int Keyboard::read()
 {
     cout << "\t" << "1 - MEETS" << endl;
     cout << "\t" << "2 - ETIRPS" << endl;;
-    cout << "\t" << "3 - DEV" << endl;;
-    cout << "Option: ";
+    cout << "Option: " << endl;
+
+    // Below cin operation should be executed within stipulated period of time
+    fd_set read_set;
+    FD_ZERO(&read_set);
+    FD_SET(STDIN_FILENO, &read_set);
+    struct timeval tv = {1, 0};     // 1 second, 0 microseconds
+
+    if (select(STDIN_FILENO + 1, &read_set, NULL, NULL, &tv) < 0)
+    {
+        perror("Error on keyboard!");
+    }
 
     int option;
-    cin >> option;
+
+    if (FD_ISSET(STDIN_FILENO, &read_set))
+    {
+        cin >> option;
+    }
 
     cout << endl;
 
@@ -60,8 +77,7 @@ int Keyboard::read()
     {
         case INTERFACE_MEETS_PRESSED:   break;
         case INTERFACE_ETIRPS_PRESSED:  break;
-        case INTERFACE_DEV_PRESSED:     break;
-        default:                        return INTERFACE_STATUS_ERROR;
+        default:                        return INTERFACE_NONE_PRESSED;
     }
 
     return option;
