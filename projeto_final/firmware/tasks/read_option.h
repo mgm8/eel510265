@@ -1,5 +1,5 @@
 /*
- * version.h
+ * read_log.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,48 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Read user option task definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.10
  * 
- * \date 20/10/2019
+ * \date 26/11/2019
  * 
- * \defgroup version Version
+ * \defgroup read_option Read Option
+ * \ingroup tasks
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef READ_OPTION_H_
+#define READ_OPTION_H_
 
-#define FIRMWARE_VERSION            "0.4.10"
+#include "os/task.h"
 
-#define FIRMWARE_STATUS             "Development"
+#define TASK_READ_OPTION_NAME       "read_option"
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+/**
+ * \brief Read user option task.
+ */
+class TaskReadOption: public vmos::Task
+{
+    public:
 
-#endif // VERSION_H_
+        /**
+         * \brief Task initialization.
+         *
+         * \return None.
+         */
+        void init();
 
-//! \} End of version group
+        /**
+         * \brief Task implementation.
+         *
+         * \return None.
+         */
+        void run();
+};
+
+#endif // READ_OPTION_H_
+
+//! \} End of read_option group
