@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.2.2
+ * \version 0.5.1
  * 
  * \date 23/10/2019
  * 
@@ -34,6 +34,9 @@
  */
 
 #include <iostream>
+
+#include <sys/select.h>
+#include <unistd.h>
 
 #include "coin_changer_sim.h"
 
@@ -48,10 +51,25 @@ int CoinChangerSim::init()
 
 bool CoinChangerSim::coin_available()
 {
-    cout << "Coin value to insert: ";
+    cout << "Coin value to insert: " << endl;
+
+    // Below cin operation should be executed within stipulated period of time
+    fd_set read_set;
+    FD_ZERO(&read_set);
+    FD_SET(STDIN_FILENO, &read_set);
+    struct timeval tv = {2, 0};     // 2 seconds, 0 microseconds
+
+    if (select(STDIN_FILENO + 1, &read_set, NULL, NULL, &tv) < 0)
+    {
+        perror("Error on keyboard!");
+    }
 
     float value;
-    cin >> value;
+
+    if (FD_ISSET(STDIN_FILENO, &read_set))
+    {
+        cin >> value;
+    }
 
     cout << endl;
 
