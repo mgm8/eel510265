@@ -1,5 +1,5 @@
 /*
- * version.h
+ * wait_coins.h
  * 
  * Copyright (C) 2019, Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
@@ -21,28 +21,48 @@
  */
 
 /**
- * \brief Version control file.
+ * \brief Wait coins task definition.
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
  * \version 0.4.11
  * 
- * \date 20/10/2019
+ * \date 26/11/2019
  * 
- * \defgroup version Version
+ * \defgroup wait_coins Wait Coins
+ * \ingroup tasks
  * \{
  */
 
-#ifndef VERSION_H_
-#define VERSION_H_
+#ifndef WAIT_COINS_H_
+#define WAIT_COINS_H_
 
-#define FIRMWARE_VERSION            "0.4.11"
+#include "os/task.h"
 
-#define FIRMWARE_STATUS             "Development"
+#define TASK_WAIT_COINS_NAME    "wait_coins"
 
-#define AUTHOR_NAME                 "Gabriel Mariano Marcelino"
-#define AUTHOR_EMAIL                "gabriel.mm8@gmail.com"
+/**
+ * \brief Wait coins task.
+ */
+class TaskWaitCoins: public vmos::Task
+{
+    public:
 
-#endif // VERSION_H_
+        /**
+         * \brief Task initialization.
+         *
+         * \return None.
+         */
+        void init();
 
-//! \} End of version group
+        /**
+         * \brief Task implementation.
+         *
+         * \return None.
+         */
+        void run();
+};
+
+#endif // WAIT_COINS_H_
+
+//! \} End of wait_coins group
