@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.6
+ * \version 0.4.8
  * 
  * \date 21/10/2019
  * 
@@ -36,7 +36,6 @@
 #include <string>
 
 #include "vending_machine.h"
-#include "drink.h"
 
 #include <terminal/terminal.h>
 #include <keyboard/keyboard.h>

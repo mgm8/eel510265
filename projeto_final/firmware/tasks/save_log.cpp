@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.2
+ * \version 0.4.9
  * 
  * \date 25/11/2019
  * 
@@ -35,13 +35,13 @@
 
 #include <string>
 
+#include <vending_machine.h>
+
 #include "save_log.h"
 #include "csv.hpp"
 
 using namespace std;
 using namespace vmos;
-
-Queue<LogEntry> system_log;
 
 void TaskSaveLog::init()
 {
@@ -54,14 +54,14 @@ void TaskSaveLog::init()
 
 void TaskSaveLog::run()
 {
-    if (system_log.size() > 0)  // Verifies if the log queue is not empty
+    if (vending_machine.system_log.size() > 0)      // Verifies if the log queue is not empty
     {
         // Opens an existing log file
-        CSV<string> log_file(VM_LOG_FILE);
+        CSV<string> log_file(VENDING_MACHINE_LOG_FILE);
 
-        for(unsigned int i=0; i<system_log.size(); i++)
+        for(unsigned int i=0; i<vending_machine.system_log.size(); i++)
         {
-            LogEntry entry = system_log.dequeue();
+            LogEntry entry = vending_machine.system_log.dequeue();
 
             List<string> csv_row;
 
@@ -73,7 +73,7 @@ void TaskSaveLog::run()
         }
 
         // Writes the CSV table to the log file
-        log_file.Write(VM_LOG_FILE);
+        log_file.Write(VENDING_MACHINE_LOG_FILE);
     }
 }
 

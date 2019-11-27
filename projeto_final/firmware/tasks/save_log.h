@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.2
+ * \version 0.4.9
  * 
  * \date 25/11/2019
  * 
@@ -38,12 +38,6 @@
 #define SAVE_LOG_H_
 
 #include "os/task.h"
-#include "os/queue.hpp"
-#include "log_entry.h"
-
-#define VM_LOG_FILE     "vending_machine_logs.csv"
-
-extern vmos::Queue<LogEntry> system_log;
 
 /**
  * \brief Log saving task.

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.7
+ * \version 0.4.9
  * 
  * \date 21/10/2019
  * 
@@ -41,8 +41,17 @@
 #include "coin_changer.h"
 #include "can_dispenser.h"
 #include "clock_calendar.h"
+#include "drink.h"
+
+#include "os/task.h"
+#include "os/list.hpp"
+#include "os/queue.hpp"
+
+#include "log_entry.h"
 
 #define VENDING_MACHINE_STATUS_OK       1
+
+#define VENDING_MACHINE_LOG_FILE        "vending_machine_logs.csv"
 
 /**
  * \brief Vending machine class.
@@ -85,13 +94,6 @@ class VendingMachine
         Display *display;
 
         /**
-         * \brief System datetime.
-         */
-        ClockCalendar datetime;
-
-    private:
-
-        /**
          * \brief User interface.
          */
         Interface *interface;
@@ -105,6 +107,28 @@ class VendingMachine
          * \brief Can dispenser device.
          */
         CanDispenser *can_dispenser;
+
+        /**
+         * \brief System datetime.
+         */
+        ClockCalendar datetime;
+
+        /**
+         * \brief Log messages queue.
+         */
+        vmos::Queue<LogEntry> system_log;
+
+        /**
+         * \brief Vending machine tasks.
+         */
+        vmos::List<vmos::Task *> tasks;
+
+        /**
+         * \brief Drinks buffer.
+         */
+        Drink drinks_buffer;
+
+    private:
 
         /**
          * \brief Delay.
