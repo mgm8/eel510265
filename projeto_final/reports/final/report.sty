@@ -42,6 +42,7 @@
 \usepackage{multirow}
 \usepackage[table]{xcolor}
 \usepackage{lscape}
+\usepackage{listings}
 
 % URLs font style
 \urlstyle{same}
@@ -65,3 +66,37 @@
 
 % Fill a cell of a table
 \newcommand{\fc}{\cellcolor{gray}}
+
+% Listings
+\lstset{
+    backgroundcolor     = \color{white},        % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+    basicstyle          = \small\sffamily,      % the size of the fonts that are used for the code
+    breakatwhitespace   = false,                % sets if automatic breaks should only happen at whitespace
+    breaklines          = true,                 % sets automatic line breaking
+    captionpos          = t,                    % sets the caption-position to top
+    commentstyle        = \color{gray},         % comment style
+    deletekeywords      = {...},                % if you want to delete keywords from the given language
+    escapeinside        = {\%*}{*)},            % if you want to add LaTeX within your code
+    extendedchars       = true,                 % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    firstnumber         = 1,                    % start line enumeration with line 1000
+    frame               = tb,                   % adds a frame around the code
+    framerule           = 1pt,                  % frame rule width
+    keepspaces          = true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle        = \bfseries,            % keyword style
+    language            = C++,                  % the language of the code
+    morekeywords        = {algoritmo,declare,inteiro,real,leia,escreva,inicio,para,faca,ate,se,entao,senao,fim,abs},           % if you want to add more keywords to the set
+    numbers             = left,                 % where to put the line-numbers; possible values are (none, left, right)
+    numbersep           = 5pt,                  % how far the line-numbers are from the code
+    numberstyle         = \tiny,                % the style that is used for the line-numbers
+    rulecolor           = \color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces          = false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces    = false,                % underline spaces within strings only
+    showtabs            = false,                % show tabs within strings adding particular underscores
+    stepnumber          = 1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle         = \color{black},        % string literal style
+    tabsize             = 2,	                % sets default tabsize to 2 spaces
+    xleftmargin         = 2em,
+    framexleftmargin    = 2em,
+    upquote             = true,
+    title               = \lstname              % show the filename of files included with \lstinputlisting; also try caption instead of title
+}

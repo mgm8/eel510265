@@ -80,6 +80,9 @@ Após 2 segundos, a tela de inicialização é apagada e o menu principal é mos
     \end{center}
 \end{figure}
 
+\subsubsection{Inserção de Moedas}
+
+Após escolher o tipo de bebida desejado, o nome e o preço da mesma aparecem na tela junto com instruções para inserir as moedas na máquina, como pode ser visto na \autoref{fig:drink-menu}.
 
 \begin{figure}[!ht]
     \begin{center}
@@ -88,6 +91,10 @@ Após 2 segundos, a tela de inicialização é apagada e o menu principal é mos
         \label{fig:drink-menu}
     \end{center}
 \end{figure}
+
+Após o valor total da respectiva bebida ser inserido, a mesma é liberada pela máquina. Caso o usuário não insira nenhuma moeda por um período de 10 segundos, a operação a cancelada e as moedas já inseridas são devolvidas. Caso o usuário insira um valor superior ao da respectiva bebida, a mesma é liberada juntamente com o troco correspondente.
+
+No caso de uma moeda inválida ser inserida, a mesma é devolvida logo após a inserção.
 
 \subsubsection{Log de operações}
 

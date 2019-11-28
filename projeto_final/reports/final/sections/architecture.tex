@@ -3,7 +3,7 @@
 %
 % Copyright (C) 2019 by Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>.
 %
-% Relatório 3 do Trabalho Final da Disciplina EEL510265.
+% Relatório final do Trabalho Final da Disciplina EEL510265.
 %
 % This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
 % International License. To view a copy of this license,
@@ -17,7 +17,7 @@
 %
 % \version 0.1.0
 %
-% \date 21/11/2019
+% \date 28/11/2019
 %
 
 \section{Arquitetura do Sistema} \label{sec:architecture}
@@ -26,7 +26,33 @@
 
 O escalonador do sistema foi implementado na forma de uma classe, contendo todos os parâmetros e métodos necessários para o funcionamento do mesmo. Este utiliza algumas classes como suporte para a sua execução, como a classe ``\textit{Timer}'', que é responsável pelo gerenciamento do contador de \textit{ticks} do sistema (ou seja, o controle de tempo), a classe ``\textit{Task}'' que implementa uma tarefa do sistema (todas as tarefas devem herdar essa classe), e outras classes que implementam estrutura de dados, como as classes ``List'' e ``Queue'' (lista e fila respectivamente).
 
-Para a implementação das tarefas, é necessário implementar as mesmas na forma de uma classe que herda a classe ``Task''. Na respectiva classe da tarefa, deve-se implementar os métodos ``\textit{void init()}'' e ``\textit{void run()}'', que são chamados durante a execução do escalonador (o primeiro, uma única ver, e o segundo periodicamente de acordo com os parâmetros de configuração da tarefa).
+Para a implementação das tarefas, é necessário implementar as mesmas na forma de uma classe que herda a classe ``\textit{Task}''. Na respectiva classe da tarefa, deve-se implementar os métodos ``\textit{void init()}'' e ``\textit{void run()}'', que são chamados durante a execução do escalonador (o primeiro, uma única vez, e o segundo periodicamente de acordo com os parâmetros de configuração da tarefa, como período e prioridade).
+
+Um exemplo de tarefa implementada deste modo, pode ser visto logo abaixo (tarefa ``\textit{Startup}'' do sistema):
+
+\begin{lstlisting}
+/**
+ * \brief Startup task.
+ */
+class TaskStartup: public vmos::Task
+{
+    public:
+
+        /**
+         * \brief Task initialization.
+         *
+         * \return None.
+         */
+        void init();
+
+        /**
+         * \brief Task implementation.
+         *
+         * \return None.
+         */
+        void run();
+};
+\end{lstlisting}
 
 \subsection{Camadas de Software}
 
