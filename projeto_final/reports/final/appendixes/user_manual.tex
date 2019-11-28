@@ -55,3 +55,40 @@ Este procedimento encontra-se ilustrado na \autoref{fig:cmd-exec}.
         \label{fig:cmd-exec}
     \end{center}
 \end{figure}
+
+\subsubsection{Tela inicial}
+
+Logo após o comando de execução, o programa uma tela indicando o nome do mesmo e a versão do \textit{firmware}. Esta esta pode ser vista na \autoref{fig:splash-screen}.
+
+\begin{figure}[!ht]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/splash-screen.png}
+        \caption{Tela de inicialização do programa.}
+        \label{fig:splash-screen}
+    \end{center}
+\end{figure}
+
+\subsubsection{Menu principal}
+
+Após 2 segundos, a tela de inicialização é apagada e o menu principal é mostrado. Neste menu é possíve selecionar as duas opções de bebidas disponíveis. Para fazer essa seleção, basta digitar os números 1 ou 2 seguidos pela tecla \textit{enter}. Este menu pode ser visto na \autoref{fig:main-menu}.
+
+\begin{figure}[!ht]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/main-menu.png}
+        \caption{Menu principal com as bebidas disponíveis.}
+        \label{fig:main-menu}
+    \end{center}
+\end{figure}
+
+
+\begin{figure}[!ht]
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{figures/drink-menu.png}
+        \caption{Terminal com o comando necessário para executar o programa após a compilação.}
+        \label{fig:drink-menu}
+    \end{center}
+\end{figure}
+
+\subsubsection{Log de operações}
+
+Para registrar as operações de venda, há um sistema de mensagens \textit{log} implementado. No caso da versão voltada para microcomputadores, as mensagens de \textit{log} são salvas em um arquivo CSV (\textit{Comma Separated Values}) a cada 5 segundos (caso haja uma operação de venda dentro deste período). As mensagens de log são compostas pela data e horário do evento e pelo nome da bebida correspondente ao evento.
