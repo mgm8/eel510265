@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.2
+ * \version 0.5.5
  * 
  * \date 06/11/2019
  * 
@@ -44,6 +44,29 @@
  */
 struct LogEntry
 {
+    /**
+     * \brief Constructor.
+     *
+     * \return None.
+     */
+    LogEntry()
+    {
+    }
+
+    /**
+     * \brief Constructore (overloaded).
+     *
+     * \param[in] cc is a CloclCalendar object.
+     * \param[in] d is a drink object.
+     *
+     * \return None.
+     */
+    LogEntry(ClockCalendar cc, Drink d)
+    {
+        datetime = cc;
+        drink = d;
+    }
+
     /**
      * \brief Date and time of the log entry.
      */

@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.11
+ * \version 0.5.5
  * 
  * \date 26/11/2019
  * 
@@ -123,6 +123,8 @@ void TaskWaitCoins::run()
             if (wait_coins_total_value == vending_machine.drinks_buffer.get_price())
             {
                 vending_machine.can_dispenser->release_can(stoi(vending_machine.drinks_buffer.get_id()));
+
+                vending_machine.system_log.enqueue(LogEntry(vending_machine.datetime, vending_machine.drinks_buffer));
 
                 delay.wait_ms(2000);
 
