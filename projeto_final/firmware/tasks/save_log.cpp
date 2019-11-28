@@ -25,7 +25,7 @@
  * 
  * \author Gabriel Mariano Marcelino <gabriel.mm8@gmail.com>
  * 
- * \version 0.4.9
+ * \version 0.5.4
  * 
  * \date 25/11/2019
  * 
@@ -34,14 +34,25 @@
  */
 
 #include <string>
+#include <fstream>
 
 #include <vending_machine.h>
 
 #include "save_log.h"
-#include "csv.hpp"
 
 using namespace std;
 using namespace vmos;
+
+void save_log(string row)
+{
+    ofstream log_file;
+
+    log_file.open(VENDING_MACHINE_LOG_FILE, ios::app);
+
+    log_file << row << endl;
+
+    log_file.close();
+}
 
 void TaskSaveLog::init()
 {
@@ -56,24 +67,20 @@ void TaskSaveLog::run()
 {
     if (vending_machine.system_log.size() > 0)      // Verifies if the log queue is not empty
     {
-        // Opens an existing log file
-        CSV<string> log_file(VENDING_MACHINE_LOG_FILE);
-
         for(unsigned int i=0; i<vending_machine.system_log.size(); i++)
         {
+            // Reads the first node of the queue
             LogEntry entry = vending_machine.system_log.dequeue();
 
-            List<string> csv_row;
+            // CSV line
+            string log_row;
 
-            csv_row.push_back(entry.datetime.get_datetime());
-            csv_row.push_back(entry.drink.get_name());
+            log_row = entry.datetime.get_datetime();
+            log_row += ",";
+            log_row += entry.drink.get_name();
 
-            // Add a new row to the CSV table
-            log_file.AppendRow(csv_row);
+            save_log(log_row);
         }
-
-        // Writes the CSV table to the log file
-        log_file.Write(VENDING_MACHINE_LOG_FILE);
     }
 }
 
